@@ -4,7 +4,7 @@
 
 Casa::Casa() {
 
-    this->estadoOcupado = 0;
+    this->estado = 0;
     this->conteudo = " ";
 }
 
@@ -17,3 +17,15 @@ std::string Casa::getConteudo() {
 
     return this->conteudo;
 }
+
+int Casa::getEstado() {
+
+    return this->estado;
+}
+
+void Casa::setEstado(int estado) {
+
+    this->estado = estado;
+    
+}
+

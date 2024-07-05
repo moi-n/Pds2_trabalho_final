@@ -8,14 +8,18 @@ class Casa {
 
     private:
 
-        int estadoOcupado;
+        int estado;
         std::string conteudo;
 
     public:
 
         Casa();
-        void setConteudo(std::string);
+        //estado
+        int getEstado();
+        void setEstado(int);
+        //conteudo
         std::string getConteudo();
+        void setConteudo(std::string);
 
 };
 
