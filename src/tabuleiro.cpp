@@ -6,10 +6,11 @@
 Tabuleiro::Tabuleiro() {
 
     this->jogador = 1;
-    this-> tam = 3;
+    this->tam_linha = 3;
+    this->tam_coluna = 3;
     this->vencedor = 0;
 
-    m_tabuleiro = std::vector<std::vector<Casa>>(this->tam, std::vector<Casa>(tam, Casa()));
+    m_tabuleiro = std::vector<std::vector<Casa>>(this->tam_linha, std::vector<Casa>(this->tam_coluna, Casa()));
 }
 
 void Tabuleiro::setJogador(int jogador) {
@@ -106,7 +107,7 @@ int Tabuleiro::checaLinha(int linha) {
             }
         }
     }
-    if (soma == this->tam){
+    if (soma == this->_linha){
        return 1;
     }
     else { 
@@ -127,7 +128,7 @@ int Tabuleiro::checaColuna(int coluna) {
             }
         }
     }
-    if (soma == this->tam){
+    if (soma == this->_coluna){
        return 1;
     }
     else { 
