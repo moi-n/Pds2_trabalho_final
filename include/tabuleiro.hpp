@@ -10,7 +10,8 @@ class Tabuleiro {
 
     private:
 
-        int tam;
+        int tam_linha;
+        int tam_coluna;
         int jogador;        
         std::vector<std::vector<Casa>> m_tabuleiro;
         int vencedor;
