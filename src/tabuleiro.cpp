@@ -3,41 +3,41 @@
 #include "casa.hpp"
 #include "tabuleiro.hpp"
 
-Tabuleiro::Tabuleiro() {
+Tabuleiro::Tabuleiro(int _tam_linha, int _tam_coluna) : tam_linha(_tam_linha), tam_coluna(_tam_coluna) {
 
-    this->jogador = 1;
-    this->tam_linha = 3;
-    this->tam_coluna = 3;
+    // inicia com o primeiro jogador (1)
+    this->jogador = 1; 
+    // inicia com 0, termina com vencedor sendo (1) ou (2)
     this->vencedor = 0;
-
     m_tabuleiro = std::vector<std::vector<Casa>>(this->tam_linha, std::vector<Casa>(this->tam_coluna, Casa()));
 }
 
-void Tabuleiro::setJogador(int jogador) {
+Tabuleiro::~Tabuleiro(){}
 
-    this->jogador = jogador*(-1);
+void Tabuleiro::setJogador(int _jogador) {
+    // alterna entre o jogador (1) e jogador (2)
+    this->jogador = _jogador;
 }
 
 int Tabuleiro::getJogador() {
-
     return this->jogador;
 }
-void Tabuleiro::setVencedor(int jogador) {
 
+void Tabuleiro::setVencedor(int jogador) {
+    // vitoria do jogador (1) ou (2)
     this->vencedor = jogador;
 }
-int Tabuleiro::getVencedor() {
 
+int Tabuleiro::getVencedor() {
     return this->vencedor;
 }
 
 void Tabuleiro::imprimeTabuleiro() {
 
     std::cout << std::endl;
-    for (int i = 0; i < m_tabuleiro.size(); i++) {
+    for (int i = 0; i < this->tam_linha; i++) {
         std::cout << "| ";
-        for (int j = 0; j < m_tabuleiro[i].size(); j++) {
-        
+        for (int j = 0; j < this->tam_coluna; j++) {
             std::cout << m_tabuleiro[i][j].getConteudo() << " | ";
         }
         std::cout << std::endl;
@@ -48,133 +48,58 @@ void Tabuleiro::imprimeTabuleiro() {
 void Tabuleiro::trocaConteudoCasa(int linha, int coluna, int jogador) {
 
     if (jogador == 1){
-        m_tabuleiro[linha][coluna].setConteudo("X");
+        m_tabuleiro[linha-1][coluna-1].setConteudo("X");
+        m_tabuleiro[linha-1][coluna-1].setEstado(1); // define a casa como 1 = preenchida pelo jogador1, 0 = vazia
     }
-    else {
-        m_tabuleiro[linha][coluna].setConteudo("O");
+
+    else if (jogador == 2) {
+        m_tabuleiro[linha-1][coluna-1].setConteudo("O");
+        m_tabuleiro[linha-1][coluna-1].setEstado(2); // define a casa como 2 = preenchida pelo jogador2, 0 = vazia
+    }
+
+    else{
+        std::cout << "Jogador Inválido!" << std::endl;
     }
 }
 
-void Tabuleiro::pegaJogada() {
+void Tabuleiro::pegaJogada(int jogador) {
 
-    std::string jogada;
     int linha, coluna;
     
-    std::cout << "Jogador " << this->jogador << ", digite sua jogada: ";
+    std::cout << "Jogador " << jogador << ", digite sua jogada, linha e coluna: ";
     while(1) {
 
-        std::getline(std::cin, jogada);
+        std::cin >> linha >> coluna;
 
-        linha = (int)(jogada[1] - '0') - 1;
-        coluna = (int)(jogada[0] - 'a');
-
-        if (jogada.size() > 2 || coluna > 2 || linha > 2 || m_tabuleiro[linha][coluna].getEstado()) {
+        if ((linha-1) > tam_linha || (coluna-1) > tam_coluna || m_tabuleiro[linha-1][coluna-1].getEstado() != 0) {
             
             std::cout << "Jogada inválida, digite novamente: ";
             continue;
         }
+
         else {
+            trocaConteudoCasa(linha, coluna, jogador);
             break;
         }
     }
-
-    trocaConteudoCasa(linha, coluna, this->jogador);
-    m_tabuleiro[linha][coluna].setEstado(1);
 }
 
-int Tabuleiro::checaOcupacaoTotal() {
-
-    for(int i = 0; i < m_tabuleiro.size(); i++) {
-        for(int j = 0; j < m_tabuleiro[i].size(); j++) {
-
-            if(m_tabuleiro[i][j].getEstado() == 0) {
-                return 0;
+int Tabuleiro::checaOcupacaoTotal() { // retorna 1 se tiver totalmente ocupado 
+    for (int i = 0; i < tam_linha; ++i) {
+        for (int j = 0; j < tam_coluna; ++j) {
+            if (m_tabuleiro[i][j].getEstado() == 0) {
+                return 0; 
             }
         }
     }
-    return 1;
+    return 1; 
 }
+// classes a serem redefinidas nas classes filhas de acordo com cada regra de jogo
 
-int Tabuleiro::checaLinha(int linha) {
+int Tabuleiro::checaLinha(int linha) {}
 
-    int soma = 1;
-    if(m_tabuleiro[linha][0].getConteudo() != " ") {
-        for(int j = 1; j < m_tabuleiro[linha].size(); j++) {
+int Tabuleiro::checaColuna(int coluna) {}
 
-            if (m_tabuleiro[linha][0].getConteudo() == m_tabuleiro[linha][j].getConteudo()) {
+int Tabuleiro::checaDiagonal() {}
 
-                soma++;
-            }
-        }
-    }
-    if (soma == this->_linha){
-       return 1;
-    }
-    else { 
-        return 0;
-    }
-}
-
-int Tabuleiro::checaColuna(int coluna) {
-
-    int soma = 1;
-    if(m_tabuleiro[0][coluna].getConteudo() != " ") {
-
-        for(int i = 1; i < m_tabuleiro[coluna].size(); i++) {
-
-            if (m_tabuleiro[0][coluna].getConteudo() == m_tabuleiro[i][coluna].getConteudo()) {
-
-                soma++;
-            }
-        }
-    }
-    if (soma == this->_coluna){
-       return 1;
-    }
-    else { 
-        return 0;
-    }
-}
-
-int Tabuleiro::checaDiagonal() {
-
-    int soma1 = 1;
-    int soma2 = 1;
-
-    if(m_tabuleiro[0][0].getConteudo() != " ") {
-
-        if(m_tabuleiro[0][0].getConteudo() == m_tabuleiro[1][1].getConteudo()) {
-            if(m_tabuleiro[0][0].getConteudo() == m_tabuleiro[2][2].getConteudo()) {
-                return 1;
-            }
-        }
-    }
-
-    if(m_tabuleiro[2][0].getConteudo() != " ") {
-
-        if(m_tabuleiro[2][0].getConteudo() == m_tabuleiro[1][1].getConteudo()) {
-            if(m_tabuleiro[2][0].getConteudo() == m_tabuleiro[0][2].getConteudo()) {
-                return 1;
-            }
-        }
-    }
-    
-    return 0;
-}
-
-int Tabuleiro::checaVitoria() {
-
-    int coluna = 0; int linha = 0; int diagonal = 0;
-
-    for(int i = 0; i < m_tabuleiro[0].size(); i++) {
-        
-        coluna = checaColuna(i);
-        linha = checaLinha(i);
-        diagonal = checaDiagonal();
-    
-        if (coluna || linha || diagonal) {
-            return 1;
-        }
-    }
-    return 0;
-}
+int Tabuleiro::checaVitoria() {}
