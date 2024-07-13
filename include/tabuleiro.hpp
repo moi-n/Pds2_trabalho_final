@@ -16,6 +16,9 @@ class Tabuleiro {
         std::vector<std::vector<Casa>> m_tabuleiro;
         int vencedor;
 
+    protected:
+        std::vector<std::vector<Casa>>& getTabuleiro();
+
     public:
 
         Tabuleiro(int _tam_linha, int _tam_coluna);
