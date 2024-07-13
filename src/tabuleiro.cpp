@@ -14,6 +14,10 @@ Tabuleiro::Tabuleiro(int _tam_linha, int _tam_coluna) : tam_linha(_tam_linha), t
 
 Tabuleiro::~Tabuleiro(){}
 
+std::vector<std::vector<Casa>>& Tabuleiro::getTabuleiro(){
+    return m_tabuleiro;
+}
+
 void Tabuleiro::setJogador(int _jogador) {
     // alterna entre o jogador (1) e jogador (2)
     this->jogador = _jogador;
