@@ -1,19 +1,27 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include "casa.hpp"
 #include "tabuleiro.hpp"
 
-int main() {
 
-    Tabuleiro t = Tabuleiro();
-    int jogadas = 0;
+int main(){
 
-    while(jogadas < 9) {
+    // jogo da velha pra teste 
+    Tabuleiro tabuleiro(3,3);
+    
+    int currentJogador = 1;
+    
+    while (true){
+        tabuleiro.imprimeTabuleiro();
 
-        t.imprimeTabuleiro();
-        t.pegaJogada();
-        jogadas++;
+        if (tabuleiro.checaOcupacaoTotal() == 1){
+            break;
+        }
+
+        tabuleiro.pegaJogada(currentJogador);
+
+        currentJogador = (currentJogador == 1) ? 2 : 1; 
     }
+
+    tabuleiro.imprimeTabuleiro();
     return 0;
 }
