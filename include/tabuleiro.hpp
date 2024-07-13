@@ -18,24 +18,29 @@ class Tabuleiro {
 
     public:
 
-        Tabuleiro();
-        void setJogador(int);
-        int getJogador();
-        void setVencedor(int);
-        int getVencedor();
+        Tabuleiro(int _tam_linha, int _tam_coluna);
+        virtual ~Tabuleiro();
+        //
         void imprimeTabuleiro();
-        void trocaConteudoCasa(int, int, int);
-        void pegaJogada();
+        void trocaConteudoCasa(int linha, int coluna, int jogador);
+        void pegaJogada(int jogador);
+
+        // pegar/mudar jogador e vencedor 
+        void setJogador(int _jogador);
+        int getJogador();
+        void setVencedor(int _vencedor);
+        int getVencedor();
+        
 
         // checa formas de ganhar
-        int checaLinha(int);
-        int checaColuna(int);
-        int checaDiagonal();
+        virtual int checaLinha(int linha);
+        virtual int checaColuna(int coluna);
+        virtual int checaDiagonal();
         
-        // checa se ganhou
-        int checaVitoria();
+        //checa se ganhou
+        virtual int checaVitoria();
 
-        // checa empate
+        // checa se o tabuleiro foi totalmente preenchido
         int checaOcupacaoTotal();
 
 };      
