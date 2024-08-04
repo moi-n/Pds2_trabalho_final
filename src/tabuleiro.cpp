@@ -75,7 +75,7 @@ void Tabuleiro::pegaJogada(int jogador) {
 
         std::cin >> linha >> coluna;
 
-        if ((linha) > tam_linha || (coluna) > tam_coluna || m_tabuleiro[linha-1][coluna-1].getEstado() != 0) {
+        if (linha <= 0 || coluna <= 0 ||(linha) > tam_linha || (coluna) > tam_coluna || m_tabuleiro[linha-1][coluna-1].getEstado() != 0) {
             
             std::cout << "Jogada inválida, digite novamente: ";
             continue;
