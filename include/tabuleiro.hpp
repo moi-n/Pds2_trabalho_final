@@ -10,7 +10,7 @@ class Tabuleiro {
 
     protected:
 
-        int num_linhas;
+        int num_linhas;   //
         int num_colunas;
         int jogador;        
         int vencedor;
