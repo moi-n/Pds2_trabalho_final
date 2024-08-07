@@ -1,29 +1,28 @@
-CC=g++
-SRC_DIR=src
-INCLUDE_DIR=include
-OBJ_DIR=obj
-BIN_DIR=bin
-RM=rm -rf
+CC = g++
+CFLAGS = -std=c++11 -Wall
+INCLUDES = -I include
 
-all: $(BIN_DIR)/jogodavelha.exe
 
-$(OBJ_DIR)/casa.o: $(INCLUDE_DIR)/casa.hpp $(SRC_DIR)/casa.cpp
-	$(CC) -c $(SRC_DIR)/casa.cpp -I$(INCLUDE_DIR) -o $(OBJ_DIR)/casa.o
+SRC = $(wildcard src/*.cpp)
+# wildcard is a function that returns a list of all files that match the pattern src/*.cpp
 
-$(OBJ_DIR)/tabuleiro.o: $(INCLUDE_DIR)/casa.hpp $(INCLUDE_DIR)/tabuleiro.hpp $(SRC_DIR)/tabuleiro.cpp
-	$(CC) -c $(SRC_DIR)/tabuleiro.cpp -I$(INCLUDE_DIR) -o $(OBJ_DIR)/tabuleiro.o
+OBJ = $(patsubst src/%.cpp, obj/%.o, $(SRC))
+# % is a wildcard that matches any string of characters
 
-$(OBJ_DIR)/jogodavelha.o: $(INCLUDE_DIR)/casa.hpp $(INCLUDE_DIR)/tabuleiro.hpp $(SRC_DIR)/jogodavelha.cpp
-	$(CC) -c $(SRC_DIR)/jogodavelha.cpp -I$(INCLUDE_DIR) -o $(OBJ_DIR)/jogodavelha.o
+EXEC = bin\main.exe
 
-$(OBJ_DIR)/player.o: $(INCLUDE_DIR)/player.hpp $(SRC_DIR)/player.cpp
-	$(CC) -c $(SRC_DIR)/player.cpp -I$(INCLUDE_DIR) -o $(OBJ_DIR)/player.o
+all: $(EXEC)
 
-$(BIN_DIR)/jogodavelha.exe: $(OBJ_DIR)/jogodavelha.o $(OBJ_DIR)/casa.o $(OBJ_DIR)/tabuleiro.o
-	$(CC) $(OBJ_DIR)/jogodavelha.o $(OBJ_DIR)/casa.o $(OBJ_DIR)/tabuleiro.o -o $(BIN_DIR)/jogodavelha.exe
+$(EXEC): $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@ 
+# $@ is the name of the target
+#$^ is the name of the dependencies
+
+obj/%.o: src/%.cpp 
+	$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
+# $< is the name of the first dependency
+# tell make to build the .o file , regardless of whether there is a corresponding .hpp
 
 clean:
-	@echo "clean project"
-	cd $(BIN_DIR) && del jogodavelha.exe 
-	cd $(OBJ_DIR) && del *.o
-	@echo "clean completed"
+	del /Q obj\*.o
+	del /Q $(EXEC)
