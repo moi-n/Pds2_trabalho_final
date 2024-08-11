@@ -42,8 +42,13 @@ void Tabuleiro::imprimeTabuleiro() {
 
     std::cout << std::endl;
     for (int i = 0; i < this->num_linhas; i++) {
+        if (i < 9){
+            std::cout << 0 << i+1 << "  _" << "| ";
+        }
+        else{
         std::cout << i+1 << "  _" << "| ";
-
+        }
+        
         for (int j = 0; j < this->num_colunas; j++) {
             std::cout << matriz_tabuleiro[i][j].getConteudo() << " | ";
         }
