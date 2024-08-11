@@ -56,7 +56,12 @@ void Tabuleiro::imprimeTabuleiro() {
     }
     std::cout << "   ";
     for (int j = 0; j < this->num_colunas; j++) {
+        if (j > 9){
+            std::cout << "/ " << j+1;
+        }
+        else{
         std::cout << " / " << j+1;
+        }
     }
     std::cout << " / ";
     std::cout << std::endl;
