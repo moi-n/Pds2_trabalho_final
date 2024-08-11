@@ -1,1 +1,1 @@
-nickname name reversi lig4 jogodavelha
+nickname name reversi lig4 jogodavelha gomoku batalhanaval

@@ -2,6 +2,9 @@
 #define PLAYER_H
 #include <iostream>
 #include <string>
+#include <vector>
+#include <map>
+#include <algorithm>
 
 class Player    {
     private:
@@ -14,7 +17,7 @@ class Player    {
         void addResult(std::string game, std::string result);
         static void setPlayer(std::string nickname, std::string name);
         static void removePlayer(std::string nickname);
-        //static void getPlayers();
+        static void getPlayers(std::string sort);
 };
 
 #endif
