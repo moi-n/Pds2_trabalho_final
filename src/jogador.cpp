@@ -2,7 +2,7 @@
 #include <sstream> 
 #include "jogador.hpp"
 
-#define NUM_JOGOS 5
+#define NUM_JOGOS 6
 
 Jogador::Jogador(std::string apelido)    {
     std::string linha = Jogador::checaJogador(apelido);
