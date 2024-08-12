@@ -3,6 +3,8 @@
 #include "casa.hpp"
 #include "tabuleiro.hpp"
 
+Tabuleiro::Tabuleiro() : Tabuleiro(0, 0) {}
+
 Tabuleiro::Tabuleiro(int _num_linhas, int _num_colunas) : num_linhas(_num_linhas), num_colunas(_num_colunas) {
 
     // inicia com o primeiro jogador (1)
@@ -17,8 +19,6 @@ Tabuleiro::~Tabuleiro(){}
 std::vector<std::vector<Casa>>& Tabuleiro::getTabuleiro(){
     return matriz_tabuleiro;
 }
-
-
 
 void Tabuleiro::setJogador(int _jogador) {
     // alterna entre o jogador (1) e jogador (2)
@@ -65,8 +65,6 @@ void Tabuleiro::imprimeTabuleiro() {
     }
     std::cout << " / ";
     std::cout << std::endl;
-    
-        
 }
 
 
