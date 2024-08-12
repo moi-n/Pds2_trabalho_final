@@ -10,18 +10,20 @@ class Tabuleiro {
 
     protected:
 
-        int num_linhas;   //
+        int num_linhas;
         int num_colunas;
         int jogador;        
         int vencedor;
         std::vector<std::vector<Casa>> matriz_tabuleiro;
 
+    public:
+
+        Tabuleiro();
+        Tabuleiro(int _num_linhas, int _num_colunas);
         std::vector<std::vector<Casa>>& getTabuleiro();
 
-    public:
-        Tabuleiro(int _num_linhas, int _num_colunas);
         virtual ~Tabuleiro();
-        //
+        
         void imprimeTabuleiro();
         virtual void trocaConteudoCasa(int linha, int coluna, int jogador);
         virtual void pegaJogada(int jogador);
@@ -32,11 +34,7 @@ class Tabuleiro {
         void setVencedor(int _vencedor);
         int getVencedor();
         
-
-        // checa formas de ganhar
-        virtual int checaLinha(int linha) = 0;
-        virtual int checaColuna(int coluna) = 0;
-        virtual int checaDiagonal() = 0;
+        //
         
         //checa se ganhou
         virtual int checaVitoria() = 0;
