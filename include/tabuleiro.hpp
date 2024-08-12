@@ -24,7 +24,7 @@ class Tabuleiro {
 
         virtual ~Tabuleiro();
         
-        void imprimeTabuleiro();
+        virtual void imprimeTabuleiro();
         virtual void trocaConteudoCasa(int linha, int coluna, int jogador);
         virtual void pegaJogada(int jogador);
 
