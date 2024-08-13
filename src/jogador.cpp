@@ -14,7 +14,7 @@ Jogador::Jogador(std::string apelido)    {
 
 std::string Jogador::checaJogador(std::string apelido)   {
     if(apelido.find(" ")!=std::string::npos)
-        throw std::logic_error("Erro: dados incorretos.");
+        throw std::invalid_argument("Erro: dados incorretos.");
 
     std::ifstream arq("jogadores.txt");  
     if(!arq.is_open())
@@ -33,15 +33,15 @@ std::string Jogador::checaJogador(std::string apelido)   {
         }
     }
     arq.close();
-    throw std::logic_error("Erro: jogador inexistente.");
+    throw std::invalid_argument("Erro: jogador inexistente.");
 }
 
 void Jogador::setJogador(std::string apelido, std::string nome)  {
     try {
         if(!Jogador::checaJogador(apelido).empty()) {
-            return;
+            throw std::invalid_argument("Erro: jogador ja existente.");
         }   
-    } catch(std::logic_error &e)    {}
+    } catch(std::invalid_argument &e)    {}
 
     std::ofstream arq_out("jogadores.txt", std::ios::app);
 
@@ -145,7 +145,7 @@ void Jogador::addResultado(std::string jogo,std::string resultado)    {
 
 void Jogador::getJogadores(std::string ordenar)   {
     if(ordenar!="[A|N]" && ordenar!="[N|A]")
-        throw std::logic_error("Erro: dados invalidos.");
+        throw std::invalid_argument("Erro: dados invalidos.");
 
     std::vector<std::string> linhas;
     std::string aux;
