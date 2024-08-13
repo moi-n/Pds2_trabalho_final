@@ -9,7 +9,7 @@ SRC = $(wildcard src/*.cpp)
 OBJ = $(patsubst src/%.cpp, obj/%.o, $(SRC))
 # % is a wildcard that matches any string of characters
 
-EXEC = bin\main.exe
+EXEC = bin\teste.exe
 
 all: $(EXEC)
 
