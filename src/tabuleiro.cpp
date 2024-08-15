@@ -4,16 +4,6 @@
 #include "casa.hpp"
 #include "tabuleiro.hpp"
 
-void Tabuleiro::entradaJogador(int linha, int coluna) {
-
-    if (linha > num_linhas || coluna > num_colunas || linha < 1 || coluna < 1) {
-        throw std::out_of_range("ERRO: jogada inválida");
-    }
-    else if (matriz_tabuleiro[linha - 1][coluna - 1].getEstado()) {
-        throw std::invalid_argument("ERRO: jogada inválida");
-    }
-}
-
 Tabuleiro::Tabuleiro() : Tabuleiro(0, 0) {}
 
 Tabuleiro::Tabuleiro(int _num_linhas, int _num_colunas) : num_linhas(_num_linhas), num_colunas(_num_colunas) {
@@ -99,25 +89,39 @@ void Tabuleiro::trocaConteudoCasa(int linha, int coluna) {
     }
 }
 
+int Tabuleiro::trataJogada(std::string jogada)    {
+    for(auto i : jogada)    
+        if(i-'0'<0 || i-'0'>9)
+            throw std::invalid_argument("Erro: jogada invalida");
+    return std::stoi(jogada);
+}
+
+
+
 void Tabuleiro::pegaJogada() {
 
     int linha, coluna;
+    std::string jogada;
 
     while(true) {
-        std::cout << "Jogador " << jogador << ", digite sua jogada, linha [SPACE] coluna: ";
-        std::cin >> linha >> coluna;
+        std::cout << "Jogador " << jogador << ", digite sua jogada, linha [SPACE] coluna: "; 
         
-        while (!std::cin) {
-            std::cin.clear ();    
-            std::cin.ignore (100,'\n');
-            std::cout << "ERRO: formato incorreto" << std::endl;
-            std::cout << "Jogador " << jogador << ", digite sua jogada, linha [SPACE] coluna: ";
-            std::cin >> linha >> coluna;
-        }
         try {
-            entradaJogador(linha, coluna);
-            break;
+            std::cin >> jogada;
+            linha = trataJogada(jogada);
+            std::cin >> jogada;
+            coluna = trataJogada(jogada);
+
+            if(!std::cin)
+                throw std::invalid_argument("Erro: formato incorreto");
+            else if (linha > num_linhas || coluna > num_colunas || linha < 1 || coluna < 1) {
+                    throw std::out_of_range("ERRO: jogada invalida");
+            } else if (matriz_tabuleiro[linha - 1][coluna - 1].getEstado()) {
+                    throw std::invalid_argument("ERRO: jogada invalida");
+            }
+            
         } catch(std::exception &e) {
+            getline(std::cin, jogada);
             std::cout << e.what() << std::endl;
         } catch(...) {
             std::cout << "Excecao desconhecida" << std::endl;

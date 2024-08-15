@@ -15,8 +15,7 @@ class Tabuleiro {
         int jogador;        
         int vencedor;
         std::vector<std::vector<Casa>> matriz_tabuleiro;
-
-        virtual void entradaJogador(int, int);
+        int trataJogada(std::string);
 
     public:
 
