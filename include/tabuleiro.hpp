@@ -16,6 +16,8 @@ class Tabuleiro {
         int vencedor;
         std::vector<std::vector<Casa>> matriz_tabuleiro;
 
+        virtual void entradaJogador(int, int);
+
     public:
 
         Tabuleiro();
@@ -25,8 +27,8 @@ class Tabuleiro {
         virtual ~Tabuleiro();
         
         virtual void imprimeTabuleiro();
-        virtual void trocaConteudoCasa(int linha, int coluna, int jogador);
-        virtual void pegaJogada(int jogador);
+        virtual void trocaConteudoCasa(int linha, int coluna);
+        virtual void pegaJogada();
 
         // pegar/mudar jogador e vencedor 
         void setJogador(int _jogador);
