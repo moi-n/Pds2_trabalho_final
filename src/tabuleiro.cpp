@@ -1,7 +1,18 @@
 #include <iostream>
 #include <string>
+#include <stdexcept>
 #include "casa.hpp"
 #include "tabuleiro.hpp"
+
+void Tabuleiro::entradaJogador(int linha, int coluna) {
+
+    if (linha > num_linhas || coluna > num_colunas || linha < 1 || coluna < 1) {
+        throw std::out_of_range("ERRO: jogada inválida");
+    }
+    else if (matriz_tabuleiro[linha - 1][coluna - 1].getEstado()) {
+        throw std::invalid_argument("ERRO: jogada inválida");
+    }
+}
 
 Tabuleiro::Tabuleiro() : Tabuleiro(0, 0) {}
 
@@ -68,7 +79,7 @@ void Tabuleiro::imprimeTabuleiro() {
 }
 
 
-void Tabuleiro::trocaConteudoCasa(int linha, int coluna, int jogador) {
+void Tabuleiro::trocaConteudoCasa(int linha, int coluna) {
 
     if (jogador == 1){
         matriz_tabuleiro[linha-1][coluna-1].setConteudo("X");
@@ -83,30 +94,36 @@ void Tabuleiro::trocaConteudoCasa(int linha, int coluna, int jogador) {
     else{
         std::cout << "Jogador Inválido!" << std::endl;
     }
+    if (!checaVitoria()) { 
+        this->jogador = (this->jogador == 1) ? 2 : 1;
+    }
 }
 
-void Tabuleiro::pegaJogada(int jogador) {
+void Tabuleiro::pegaJogada() {
 
     int linha, coluna;
-    
-    std::cout << "Jogador " << jogador << ", digite sua jogada, linha [SPACE] coluna: ";
-    while(1) {
 
+    while(true) {
+        std::cout << "Jogador " << jogador << ", digite sua jogada, linha [SPACE] coluna: ";
         std::cin >> linha >> coluna;
-
-        if (linha <= 0 || coluna <= 0 || (linha) > num_linhas || (coluna) > num_colunas ||
-         matriz_tabuleiro[linha-1][coluna-1].getEstado() != 0) {
-            
-            std::cout << "Jogada inválida, digite novamente: ";
-            continue;
+        
+        while (!std::cin) {
+            std::cin.clear ();    
+            std::cin.ignore (100,'\n');
+            std::cout << "ERRO: formato incorreto" << std::endl;
+            std::cout << "Jogador " << jogador << ", digite sua jogada, linha [SPACE] coluna: ";
+            std::cin >> linha >> coluna;
         }
-
-        else {
-            trocaConteudoCasa(linha, coluna, jogador);
+        try {
+            entradaJogador(linha, coluna);
             break;
+        } catch(std::exception &e) {
+            std::cout << e.what() << std::endl;
+        } catch(...) {
+            std::cout << "Excecao desconhecida" << std::endl;
         }
     }
-
+    trocaConteudoCasa(linha, coluna);
 }
 
 int Tabuleiro::checaOcupacaoTotal() { // retorna 1 se tiver totalmente ocupado 
