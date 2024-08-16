@@ -4,7 +4,7 @@
 #include "gomoku.hpp"
 #include "tabuleiro.hpp"
 
-Gomoku::Gomoku(int linha_, int coluna_) : Tabuleiro(linha_, coluna_) {}
+Gomoku::Gomoku(int linha_, int coluna_) : TabuleiroFileira(linha_, coluna_) {}
 
 Gomoku::~Gomoku() {}
 
@@ -48,7 +48,7 @@ int Gomoku::checaColuna(int coluna){
 
 int Gomoku::checaDiagonal(){
     auto& tabuleiro = getTabuleiro();
-    //x representando cada linha, y cada coluna, z a area final 
+    //x representando cada linha, y/j cada coluna, z a area final 
 
     // checa descendo para direita 
     for (int x = 0; x <= num_linhas-5; x++ ){
@@ -69,7 +69,7 @@ int Gomoku::checaDiagonal(){
     
     // checa descendo para esquerda
     for (int x = 0; x <= num_colunas-5; x++){
-        for (int j = 4; j < 15; j++){
+        for (int j = 4; j < num_colunas; j++){
             bool venceu = true;
             std::string conteudo = tabuleiro[x][j].getConteudo();
 
@@ -94,7 +94,7 @@ int Gomoku::checaVitoria(){
     }
 
     for (int j = 0; j < num_colunas; j++){
-        int vencedor = checaLinha(j);
+        int vencedor = checaColuna(j);
         if (vencedor) return vencedor;
     }
 
