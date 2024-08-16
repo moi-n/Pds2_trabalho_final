@@ -115,10 +115,11 @@ void Tabuleiro::pegaJogada() {
             if(!std::cin)
                 throw std::invalid_argument("Erro: formato incorreto");
             else if (linha > num_linhas || coluna > num_colunas || linha < 1 || coluna < 1) {
-                    throw std::out_of_range("ERRO: jogada invalida");
+                throw std::out_of_range("ERRO: jogada invalida");
             } else if (matriz_tabuleiro[linha - 1][coluna - 1].getEstado()) {
-                    throw std::invalid_argument("ERRO: jogada invalida");
+                throw std::invalid_argument("ERRO: jogada invalida");
             }
+            break;
             
         } catch(std::exception &e) {
             getline(std::cin, jogada);
