@@ -1,6 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "include\doctest.h"
-#include "include\gomoku.hpp"
+#include "doctest.h"
+#include "gomoku.hpp"
 
 TEST_CASE("Testando o método checaLinha") {
   Gomoku tabuleiro(15, 15);
