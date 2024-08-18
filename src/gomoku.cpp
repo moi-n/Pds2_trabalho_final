@@ -88,15 +88,23 @@ int Gomoku::checaDiagonal(){
 }
 
 int Gomoku::checaVitoria(){
-    for (int i = 0; i < num_linhas; i++){
-        int vencedor = checaLinha(i);
-        if (vencedor) return vencedor;
-    }
+    int coluna = 0; int linha = 0; int diagonal = 0;
 
-    for (int j = 0; j < num_colunas; j++){
-        int vencedor = checaColuna(j);
-        if (vencedor) return vencedor;
+    for(int i = 0; i < num_linhas; i++) {
+        
+        coluna = checaColuna(i);
+        linha = checaLinha(i);
+        diagonal = checaDiagonal();
+    
+        if (coluna || linha || diagonal) {
+            if(jogador==1)
+                vencedor=1;
+            else if(jogador==2)
+                vencedor=2;
+            return 1;
+        }
     }
-
-    return checaDiagonal();
+     if(checaOcupacaoTotal()) 
+        return 1;
+    return 0;
 }
