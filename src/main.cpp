@@ -103,7 +103,7 @@ int main() {
         // jogo = new Lig4();
     } else if(num_jogo==3)  {
         jogo = new JogodaVelha(3,3);
-    // } else if(num_jogo==4)  {
+    } else if(num_jogo==4)  {
         jogo = new Gomoku(15,15);
     // } else if(num_jogo==5)  {
     //     jogo = new BatalhaNaval();
