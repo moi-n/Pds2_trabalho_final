@@ -6,15 +6,14 @@
  * 
  * A classe descreve uma coordenada (x, y) qualquer. Foi utilizada para o jogo Batalha Naval.
  */
-
 class Ponto {
 
     protected:
 
         int x; //!< Posição x de um objeto.
         int y; //!< Posição y de um objeto.
-    public:
 
+    public:
         /*!
          * \brief Construtor default da classe Ponto.
         */
