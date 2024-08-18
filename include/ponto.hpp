@@ -2,9 +2,9 @@
 #define PONTO_HPP
 
 /**
- * \brief Classe Ponto
+ * \brief \class Ponto
  * 
- * A classe descreve uma coordenada (x, y) qualquer. Foi utilizada para o jogo Batalha Naval.
+ * Descreve uma coordenada (x, y) qualquer. Foi utilizada para o jogo Batalha Naval.
  */
 class Ponto {
 
@@ -29,7 +29,6 @@ class Ponto {
         * \details É colocado como virtual para que não haja problemas futuros se a classe for herdada.
         */
         virtual ~Ponto();
-
         /*!
          * \brief Método responsável por retornar o valor do parâmetro x da classe.
         */

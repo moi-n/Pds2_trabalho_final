@@ -5,10 +5,10 @@
 #include <vector>
 #include "ponto.hpp"
 
-/**
- * \brief Classe Barco
+/*!
+ * \brief \class Barco
  * 
- * A classe define um barco qualquer utilizado no jogo Batalha Naval. É composta pela classe Ponto.
+ * Define um barco qualquer utilizado no jogo Batalha Naval. É composta pela classe Ponto.
  */
 class Barco {
 

@@ -7,9 +7,9 @@
 #include "casa.hpp"
 
 /**
- * \brief Classe tabuleiro base
+ * \brief \class Tabuleiro
  * 
- * A classe base utilizada para criar todos os jogos.
+ * É a classe base utilizada para criar todos os jogos. É composta pela classe Casa.
  */
 class Tabuleiro {
  
