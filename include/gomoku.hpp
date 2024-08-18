@@ -19,8 +19,8 @@ class Gomoku : public TabuleiroFileira{
         * \brief Construtor com parâmetros da classe Gomoku.
         * \details Faz a chamada do construtor com parâmetros da classe Tabuleiro, possuindo dois inteiros,
         * linha e coluna, como parâmetros de entrada definidos pelo usuário.
-        * \param num_linhas Número de linhas do tabuleiro.
-        * \param num_colunas Número de colunas do tabuleiro.
+        * \param linha_ Número de linhas do tabuleiro.
+        * \param coluna_ Número de colunas do tabuleiro.
         */
         Gomoku(int linha_, int coluna_);
         /*!
