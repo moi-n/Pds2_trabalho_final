@@ -1,7 +1,8 @@
 #include "ponto.hpp"
 
 Ponto::Ponto() : Ponto(0, 0) {}
-Ponto::Ponto(int _x, int _y) : x(_x), y(_y) {}
+Ponto::Ponto(int x, int y) : x(x), y(y) {}
+Ponto::~Ponto() {}
 
 int Ponto::getX() {
     return this->x;
