@@ -1,5 +1,4 @@
 #include "batalhanaval.hpp"
-#include <random>
 
 BatalhaNaval::BatalhaNaval() : Tabuleiro() {}
 
@@ -11,7 +10,7 @@ BatalhaNaval::BatalhaNaval(int _num_linhas, int _num_colunas) : Tabuleiro(_num_l
     fase_jogo = 1;
 
     int aux = 1;
-    std::vector<int> tamanho_barcos = {1, 1, 1, 1};
+    std::vector<int> tamanho_barcos = {2, 3, 3, 1};
 
     for (int k = 0; k < 2; k++) {
         std::vector<Barco> barcos;
