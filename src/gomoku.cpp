@@ -4,10 +4,16 @@
 #include "gomoku.hpp"
 #include "tabuleiro.hpp"
 
+// \brief \class é responsável pelos métodos para realizar o jogo Gomoku
+
 Gomoku::Gomoku(int linha_, int coluna_) : TabuleiroFileira(linha_, coluna_) {}
 
 Gomoku::~Gomoku() {}
 
+/* \brief \class Método para checar a vitória dos jogadores no formato 5 em uma linha.
+Retorna o valor "1" caso o primeiro jogador tenha vencido, "2" caso o segundo jogador
+tenha vencido, e retorna 0 caso nenhum dos jogadores tenha vencido a partida.
+*/ 
 int Gomoku::checaLinha(int linha){
     auto& tabuleiro = getTabuleiro();
 
@@ -27,6 +33,10 @@ int Gomoku::checaLinha(int linha){
     return 0;
 }
 
+/* \brief \class Método para checar a vitória dos jogadores no formato 5 em uma coluna.
+Retorna o valor "1" caso o primeiro jogador tenha vencido, "2" caso o segundo jogador
+tenha vencido, e retorna 0 caso nenhum dos jogadores tenha vencido a partida.
+*/
 int Gomoku::checaColuna(int coluna){
     auto& tabuleiro = getTabuleiro();
 
@@ -46,11 +56,14 @@ int Gomoku::checaColuna(int coluna){
     return 0;
 }
 
+/* \brief \class Método para checar a vitória dos jogadores no formato 5 em uma diagonal.
+Retorna o valor "1" caso o primeiro jogador tenha vencido, "2" caso o segundo jogador
+tenha vencido, e retorna 0 caso nenhum dos jogadores tenha vencido a partida.
+*/
 int Gomoku::checaDiagonal(){
     auto& tabuleiro = getTabuleiro();
-    //x representando cada linha, y/j cada coluna, z a area final 
-
-    // checa descendo para direita 
+    
+    // \brief \details checa a vitória em diagonal descendente para direita, sem ultrapassar o limite lateral direito
     for (int x = 0; x <= num_linhas-5; x++ ){
         for (int y = 0; y <= 10; y++){
             bool venceu = true;
@@ -67,7 +80,7 @@ int Gomoku::checaDiagonal(){
         }
     }
     
-    // checa descendo para esquerda
+    // \brief \details checa a vitória em diagonal descendente para esquerda, sem ultrapassar o limite lateral esquerdo
     for (int x = 0; x <= num_colunas-5; x++){
         for (int j = 4; j < num_colunas; j++){
             bool venceu = true;
@@ -87,6 +100,11 @@ int Gomoku::checaDiagonal(){
     return 0;
 }
 
+/* \brief \class Método auxiliar para checar a vitória de forma geral, utilizando como base os métodos anteriores:
+checaColuna(int coluna);
+checaLinha(int linha);
+checaDiagonal();
+*/
 int Gomoku::checaVitoria(){
     int coluna = 0; int linha = 0; int diagonal = 0;
 
