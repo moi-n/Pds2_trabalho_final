@@ -15,6 +15,8 @@ Barco::Barco(int tam, int _id) : tamanho(tam), id(_id), posicionado(false) {
     }
 }
 
+Barco::~Barco() {}
+
 void Barco::adicionaExtremidade(int linha, int coluna) {
     Ponto aux(coluna, linha);
     extremidades.push_back(aux);

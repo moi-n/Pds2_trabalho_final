@@ -8,6 +8,8 @@ Casa::Casa() {
     this->conteudo = " ";
 }
 
+Casa::~Casa() {}
+
 void Casa::setConteudo(std::string escolha) {
 
     this->conteudo = escolha;
