@@ -21,9 +21,6 @@ std::string Jogador::getApelido()   {
 }
 
 std::string Jogador::checaJogador(std::string apelido)   {
-    if(apelido.find(" ")!=std::string::npos)
-        throw std::invalid_argument("Erro: dados incorretos.");
-
     std::ifstream arq("jogadores.txt");  
     if(!arq.is_open())
         throw std::ifstream::failure("Erro: arquivo inexistente.");
@@ -45,6 +42,8 @@ std::string Jogador::checaJogador(std::string apelido)   {
 }
 
 void Jogador::setJogador(std::string apelido, std::string nome)  {
+    if((int)apelido.length()==0 || (int)nome.length()==0)
+        throw std::invalid_argument("Erro: nome e/ou apelido não preenchido.");
     try {
         if(!Jogador::checaJogador(apelido).empty()) {
             throw std::logic_error("Erro: jogador repetido.");

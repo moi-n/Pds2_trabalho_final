@@ -99,14 +99,14 @@ int main() {
     //antes de alocar a memória do tabuleiro.
     if(num_jogo==1)   {
         jogo = new Reversi();
-    // } else if(num_jogo==2)   {
-        // jogo = new Lig4();
+    } else if(num_jogo==2)   {
+        jogo = new Lig4(6,7);
     } else if(num_jogo==3)  {
         jogo = new JogodaVelha(3,3);
     } else if(num_jogo==4)  {
         jogo = new Gomoku(15,15);
-    // } else if(num_jogo==5)  {
-    //     jogo = new BatalhaNaval();
+    } else if(num_jogo==5)  {
+        jogo = new BatalhaNaval(10,10);
     // } else if(num_jogo==6)  {
     //     jogo = new Damas();
     }
