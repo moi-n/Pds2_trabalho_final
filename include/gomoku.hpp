@@ -13,9 +13,9 @@ class Gomoku : public TabuleiroFileira{
         virtual ~Gomoku();
 
         // funções virtuais da classe pai Tabuleiro
-        int checaLinha(int linha) override; // retorna 1 se jogador 1 ganho, 2 same, 0 se nenhum
-        int checaColuna(int coluna) override;// retorna 1 se jogador 1 ganho, 2 same, 0 se nenhum
-        int checaDiagonal() override;// retorna 1 se jogador 1 ganho, 2 same, 0 se nenhum
+        int checaLinha(int linha) override; 
+        int checaColuna(int coluna) override;
+        int checaDiagonal() override;
         
         int checaVitoria() override;
 };
