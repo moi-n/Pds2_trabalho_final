@@ -6,6 +6,11 @@
 #include <map>
 #include <algorithm>
 
+/**
+ * \brief Classe Jogador
+ * 
+ * Classe que implementa o cadastro/manutenção dos jogadores dos jogos.
+ */
 class Jogador    {
     private:
 

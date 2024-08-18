@@ -2,18 +2,18 @@
 #include <string>
 #include <vector>
 #include "lig4.hpp"
-#include "tabuleiro.hpp"
+#include "tabuleirofileira.hpp"
 
 ////////////////////////// Lig4() //////////////////////////
 
-Lig4::Lig4(int linha_, int coluna_) : Tabuleiro(linha_, coluna_) {}
+Lig4::Lig4(int linha_, int coluna_) : TabuleiroFileira(linha_, coluna_) {}
 
 Lig4::~Lig4() {}
 
 
 ////////////////////////// pegaJogada() //////////////////////////
 
-void Lig4:: pegaJogada(int jogador){
+void Lig4::pegaJogada(){
     int linha, coluna ;
     std::cout << "Jogador " << jogador << " escolha uma coluna: ";
     while(1) {
@@ -30,12 +30,12 @@ void Lig4:: pegaJogada(int jogador){
             }
         ////////////////////////// checa validade da entrada //////////////////////////
         if (coluna <= 0 || coluna > num_colunas || linha == -1){
-            std::cout << "Jogada inva\'lida, digite novamente: ";
+            std::cout << "Jogada invalida, digite novamente: ";
             continue;
         }
 
         else {
-            trocaConteudoCasa(linha+1, coluna, jogador);
+            trocaConteudoCasa(linha+1, coluna);
             break;
         }
     }
@@ -157,7 +157,6 @@ int Lig4::checaDiagonal(){
 ////////////////////////// checaVitoria() //////////////////////////
 
 int Lig4::checaVitoria(){
-    int vencedor = 0;
     for (int i = 0; i < num_linhas; i++){
         vencedor = checaLinha(i);
         if(vencedor != 0) return vencedor;
@@ -170,6 +169,6 @@ int Lig4::checaVitoria(){
 
     vencedor = checaDiagonal();
     if(vencedor != 0) return vencedor;
-
+    vencedor=0;
     return 0;
 }

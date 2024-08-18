@@ -6,6 +6,11 @@
 #include <vector>
 #include "casa.hpp"
 
+/**
+ * \brief Classe tabuleiro base
+ * 
+ * A classe base utilizada para criar todos os jogos.
+ */
 class Tabuleiro {
  
     protected:

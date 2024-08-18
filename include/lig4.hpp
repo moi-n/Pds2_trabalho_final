@@ -6,13 +6,13 @@
 #include <vector>
 #include "tabuleiro.hpp"
 
-class Lig4 : public Tabuleiro{
+class Lig4 : public TabuleiroFileira{
 
     public:
         Lig4(int _num_linhas, int _num_colunas);
         ~Lig4();
 
-        void pegaJogada(int jogador) override;
+        void pegaJogada() override;
 
         int checaLinha(int linha) override; 
         int checaColuna(int coluna) override;

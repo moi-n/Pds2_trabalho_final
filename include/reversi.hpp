@@ -2,6 +2,12 @@
 #define REVERSI_HPP
 #include "tabuleiro.hpp"
 
+
+/**
+ * \brief Tabuleiro do jogo Reversi
+ * 
+ * Classe herdeira da classe base Tabuleiro, que possui a função de implementar o jogo Reversi.
+ */
 class Reversi : public Tabuleiro    {
     private:
         /**
