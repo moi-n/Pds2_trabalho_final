@@ -47,7 +47,7 @@ std::string Jogador::checaJogador(std::string apelido)   {
 void Jogador::setJogador(std::string apelido, std::string nome)  {
     try {
         if(!Jogador::checaJogador(apelido).empty()) {
-            throw std::logic_error("Erro: jogador ja existente.");
+            throw std::logic_error("Erro: jogador repetido.");
         }   
     }catch(std::invalid_argument &e)   {}
 

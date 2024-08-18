@@ -29,14 +29,14 @@ int menu(std::string &jogador1, std::string &jogador2)  {
 
     std::cout<<"Bem vindo ao salao de jogos!"<<std::endl;
     std::cout <<"-------------------------------------------------------------------------------------------" << std::endl; 
-    std::cout<<"Jogos: 1->Reversi | 2->Lig4 | 3-> Jogo da Velha | 4-> Gomoku | 5-> Batalha Naval | 6-> Damas" << std::endl;
+    std::cout<<"Jogos: 1-> Reversi | 2-> Lig4 | 3-> Jogo da Velha | 4-> Gomoku | 5-> Batalha Naval | 6-> Damas" << std::endl;
     std::cout<< "-------------------------------------------------------------------------------------------" << std::endl;
     std::cout<<"Comandos:" << std::endl;
     std::cout<<"Cadastrar jogador: 'CJ <Apelido> <Nome>'"<<std::endl;
     std::cout<<"Remover jogador: 'RJ <Apelido>'" <<std::endl;
-    std::cout<<"Listar jogador (ordenar por nome-apelido='[N|A]' ou ordenar por apelido-nome='[A|N]'): 'LJ <ordenar>'" << std::endl;
+    std::cout<<"Listar jogadores (ordenar por nome-apelido='[N|A]' ou ordenar por apelido-nome='[A|N]'): 'LJ <ordenar>'" << std::endl;
     std::cout<<"Iniciar partida: '<Numero do Jogo> <Apelido jogador 1> <Apelido jogador 2>'" << std::endl;
-    std::cout<<"Sair: 'Sair'" << std::endl;
+    std::cout<<"Finalizar sistema: 'FS'" << std::endl;
     std::cout<< "-------------------------------------------------------------------------------------------"<<std::endl;
 
     while(true) {
@@ -44,19 +44,19 @@ int menu(std::string &jogador1, std::string &jogador2)  {
         std::string parametro1, parametro2;
             
         try   {
-            std::cin >> comando;
+            std::cin >> comando;    
             comando = paraMinusculo(comando);
             
             if(comando=="cj")   {
                 std::cin >> parametro1 >> parametro2;
                 if(!std::cin) throw std::invalid_argument("Erro: dados invalidos");
                 Jogador::setJogador(parametro1, parametro2);
-                std::cout << "Jogador cadastrado!" << std::endl;
+                std::cout << "Jogador "<< parametro1 <<" cadastrado com sucesso" << std::endl;
             } else if(comando=="rj")    {
                 std::cin >> parametro1;
                 if(!std::cin) throw std::invalid_argument("Erro: dados invalidos");
                 Jogador::removeJogador(parametro1);
-                std::cout << "Jogador removido!" << std::endl;
+                std::cout << "Jogador "<< parametro1 << "removido com sucesso" << std::endl;
             } else if(comando=="lj")    {
                 std::cin >> parametro1;
                 if(!std::cin) throw std::invalid_argument("Erro: dados invalidos");
@@ -67,8 +67,8 @@ int menu(std::string &jogador1, std::string &jogador2)  {
                 Jogador teste2(parametro2);
                 jogador1=parametro1;
                 jogador2=parametro2;
-                return std::stoi(comando);
-            } else if(comando=="sair")   {
+                return comando[0]-'0';
+            } else if(comando=="fs")   {
                 std::exit(0);
             } else  {
                 std::cout << "Comando invalido." << std::endl;
@@ -137,5 +137,6 @@ int main() {
         jogador2.addResultado(jogoCorrespondente(num_jogo), "empate");
 
     }
+    delete jogo;
     return 0;
 }
