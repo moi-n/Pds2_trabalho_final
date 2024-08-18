@@ -14,7 +14,7 @@ int JogodaVelha::checaLinha(int linha) {
 
     int soma = 1;
     if(matriz_tabuleiro[linha][0].getConteudo() != " ") {
-        for(int j = 1; j < matriz_tabuleiro[linha].size(); j++) {
+        for(int j = 1; j < (int)matriz_tabuleiro[linha].size(); j++) {
 
             if (matriz_tabuleiro[linha][0].getConteudo() == matriz_tabuleiro[linha][j].getConteudo()) {
 
@@ -35,7 +35,7 @@ int JogodaVelha::checaColuna(int coluna) {
     int soma = 1;
     if(matriz_tabuleiro[0][coluna].getConteudo() != " ") {
 
-        for(int i = 1; i < matriz_tabuleiro[coluna].size(); i++) {
+        for(int i = 1; i < (int)matriz_tabuleiro[coluna].size(); i++) {
 
             if (matriz_tabuleiro[0][coluna].getConteudo() == matriz_tabuleiro[i][coluna].getConteudo()) {
 
@@ -52,9 +52,6 @@ int JogodaVelha::checaColuna(int coluna) {
 }
 
 int JogodaVelha::checaDiagonal() {
-
-    int soma1 = 1;
-    int soma2 = 1;
 
     if(matriz_tabuleiro[0][0].getConteudo() != " ") {
 
@@ -95,5 +92,7 @@ int JogodaVelha::checaVitoria() {
             return 1;
         }
     }
+     if(checaOcupacaoTotal()) 
+        return 1;
     return 0;
 }

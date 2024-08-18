@@ -5,8 +5,9 @@
 #include <string>
 #include <vector>
 #include "tabuleiro.hpp"
+#include "tabuleirofileira.hpp"
 
-class Lig4 : public TabuleiroFileira{
+class Lig4 : public TabuleiroFileira {
 
     public:
         Lig4(int _num_linhas, int _num_colunas);

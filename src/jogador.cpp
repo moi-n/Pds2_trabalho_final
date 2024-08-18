@@ -12,6 +12,14 @@ Jogador::Jogador(std::string apelido)    {
 
 }
 
+std::string Jogador::getNome()  {
+    return this->nome;
+}
+
+std::string Jogador::getApelido()   {
+    return this->apelido;
+}
+
 std::string Jogador::checaJogador(std::string apelido)   {
     if(apelido.find(" ")!=std::string::npos)
         throw std::invalid_argument("Erro: dados incorretos.");
@@ -39,9 +47,9 @@ std::string Jogador::checaJogador(std::string apelido)   {
 void Jogador::setJogador(std::string apelido, std::string nome)  {
     try {
         if(!Jogador::checaJogador(apelido).empty()) {
-            throw std::invalid_argument("Erro: jogador ja existente.");
+            throw std::logic_error("Erro: jogador ja existente.");
         }   
-    } catch(std::invalid_argument &e)    {}
+    }catch(std::invalid_argument &e)   {}
 
     std::ofstream arq_out("jogadores.txt", std::ios::app);
 
@@ -193,6 +201,8 @@ void Jogador::getJogadores(std::string ordenar)   {
             std::cout << linhas[i].substr(0, _pos) << " " <<linhas[i].substr(_pos+1, linhas[i].find(" ", _pos+1)-(_pos+1)) << std::endl;
         else
             std::cout << linhas[i].substr(_pos+1, linhas[i].find(" ", _pos+1)-(_pos+1)) << " " << linhas[i].substr(0, _pos) << std::endl;
+        
+        std::cout << "------------------------------------------------" << std::endl;
         for(int j=0; j<NUM_JOGOS; j++)  {
             _pos = linhas[i].find(" ", _pos+1);
             pos_jogo = linhas[0].find(" ", pos_jogo+1);

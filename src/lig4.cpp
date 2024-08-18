@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 #include "lig4.hpp"
+#include "tabuleiro.hpp"
 #include "tabuleirofileira.hpp"
-
 ////////////////////////// Lig4() //////////////////////////
 
 Lig4::Lig4(int linha_, int coluna_) : TabuleiroFileira(linha_, coluna_) {}

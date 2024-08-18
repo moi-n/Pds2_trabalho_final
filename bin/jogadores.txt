@@ -1,1 +1,4 @@
 apelido nome reversi lig4 jogodavelha gomoku batalhanaval dama
+alexania maria 0|0|0 0|0|0 1|1|1 0|0|0 0|0|0 0|0|0
+moises henrique 0|0|0 0|0|0 0|1|1 0|0|0 0|0|0 0|0|0
+andre luiz 0|0|0 0|0|0 1|0|0 0|0|0 0|0|0 0|0|0

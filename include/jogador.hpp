@@ -46,6 +46,17 @@ class Jogador    {
         Jogador(std::string apelido);
 
         /**
+         * \brief Método responsável por retornar o nome do jogador. 
+         * \return nome
+         */ 
+        std::string getNome();
+
+        /**
+         * \brief Método responsável por retornar o apelido do jogador.
+         * \return apelido
+         */
+        std::string getApelido();
+        /**
          * \brief Método para adicionar o resultado da partida no arquivo "jogadores.txt".
          * @param jogo Nome do jogo.
          * @param resultado Valores possíveis aceitos: "vitoria", "derrota" e "empate".
