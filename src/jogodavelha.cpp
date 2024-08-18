@@ -88,6 +88,10 @@ int JogodaVelha::checaVitoria() {
         diagonal = checaDiagonal();
     
         if (coluna || linha || diagonal) {
+            if(jogador==1)
+                vencedor=1;
+            else if(jogador==2)
+                vencedor=2;
             return 1;
         }
     }

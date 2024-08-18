@@ -21,18 +21,8 @@ std::vector<std::vector<Casa>>& Tabuleiro::getTabuleiro(){
     return matriz_tabuleiro;
 }
 
-void Tabuleiro::setJogador(int _jogador) {
-    // alterna entre o jogador (1) e jogador (2)
-    this->jogador = _jogador;
-}
-
 int Tabuleiro::getJogador() {
     return this->jogador;
-}
-
-void Tabuleiro::setVencedor(int jogador) {
-    // vitoria do jogador (1) ou (2)
-    this->vencedor = jogador;
 }
 
 int Tabuleiro::getVencedor() {
@@ -68,7 +58,6 @@ void Tabuleiro::imprimeTabuleiro() {
     std::cout << std::endl;
 }
 
-
 void Tabuleiro::trocaConteudoCasa(int linha, int coluna) {
 
     if (jogador == 1){
@@ -95,8 +84,6 @@ int Tabuleiro::trataJogada(std::string jogada)    {
             throw std::invalid_argument("Erro: jogada invalida");
     return std::stoi(jogada);
 }
-
-
 
 void Tabuleiro::pegaJogada() {
 

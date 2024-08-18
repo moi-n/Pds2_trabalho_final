@@ -3,10 +3,7 @@
 #include "jogador.hpp"
 
 #define NUM_JOGOS 6
-/**
- * \brief Construtor do Jogador.
- * @param apelido Apelido do jogador que será atribuído à variável.
- */
+
 Jogador::Jogador(std::string apelido)    {
     std::string linha = Jogador::checaJogador(apelido);
     std::stringstream info(linha);
@@ -38,12 +35,7 @@ std::string Jogador::checaJogador(std::string apelido)   {
     arq.close();
     throw std::invalid_argument("Erro: jogador inexistente.");
 }
-/**
- *\brief Método estático para cadastrar um jogador.
- *O apelido para um jogador deve ser único.
- *@param apelido Apelido do jogador.
- *@param nome Nome do jogador.  
- */
+
 void Jogador::setJogador(std::string apelido, std::string nome)  {
     try {
         if(!Jogador::checaJogador(apelido).empty()) {
@@ -66,11 +58,6 @@ void Jogador::setJogador(std::string apelido, std::string nome)  {
     arq_out.close();
 
 }
-
-/**
- * \brief Método estático para remover um jogador.
- *@param apelido Apelido do jogador que deseja-se remover.
- */
 
 void Jogador::removeJogador(std::string apelido) {
     Jogador::checaJogador(apelido);
@@ -108,11 +95,6 @@ int Jogador::posJogo(std::string jogo)   {
     }
     return i;
 }
-/**
- * \brief Método para adicionar o resultado da partida no arquivo "jogadores.txt".
- * @param jogo Nome do jogo.
- * @param resultado Valores possíveis aceitos: "vitoria", "derrota" e "empate".
- */
 
 void Jogador::addResultado(std::string jogo,std::string resultado)    {
     std::ifstream arq_in("jogadores.txt");
@@ -160,11 +142,6 @@ void Jogador::addResultado(std::string jogo,std::string resultado)    {
     arq_out << out;
     arq_out.close();
 }
-
-/**
- * \brief Imprime todos os jogadores ordenando por nome ou apelido.
- * @param ordenar Valores possíveis aceitos: "[A|N]"" e "[N|A]".
- */
 
 void Jogador::getJogadores(std::string ordenar)   {
     if(ordenar!="[A|N]" && ordenar!="[N|A]")
