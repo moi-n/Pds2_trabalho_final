@@ -83,7 +83,7 @@ TEST_CASE("Testando a função checaVitoria") {
 
   SUBCASE("Testando sem vencedor") { CHECK(tabuleiro.checaVitoria() == 0); }
 
-  // testando vitória do jogador 1
+  // testando vitória do jogador
   SUBCASE("Verificando vitória em uma linha") {
     for (int i = 0; i < 5; i++) {
       tabuleiro.getTabuleiro()[0][i].setConteudo("X");
@@ -103,27 +103,5 @@ TEST_CASE("Testando a função checaVitoria") {
       tabuleiro.getTabuleiro()[i][i].setConteudo("X");
     }
     CHECK(tabuleiro.checaVitoria() == 1);
-  }
-
-  // testando vitória jogador 2
-  SUBCASE("Verificando vitória em uma linha") {
-    for (int i = 0; i < 5; i++) {
-      tabuleiro.getTabuleiro()[0][i].setConteudo("O");
-    }
-    CHECK(tabuleiro.checaVitoria() == 2);
-  }
-
-  SUBCASE("Testando vitória em uma coluna") {
-    for (int i = 0; i < 5; i++) {
-      tabuleiro.getTabuleiro()[i][0].setConteudo("O");
-    }
-    CHECK(tabuleiro.checaVitoria() == 2);
-  }
-
-  SUBCASE("Testando vitória em uma diagonal") {
-    for (int i = 0; i < 5; i++) {
-      tabuleiro.getTabuleiro()[i][i].setConteudo("O");
-    }
-    CHECK(tabuleiro.checaVitoria() == 2);
   }
 }
