@@ -10,7 +10,7 @@ BatalhaNaval::BatalhaNaval(int _num_linhas, int _num_colunas) : Tabuleiro(_num_l
     fase_jogo = 1;
 
     int aux = 1;
-    std::vector<int> tamanho_barcos = {2, 3, 3, 1};
+    std::vector<int> tamanho_barcos = {2, 3, 2, 1};
 
     for (int k = 0; k < 2; k++) {
         std::vector<Barco> barcos;
@@ -23,6 +23,8 @@ BatalhaNaval::BatalhaNaval(int _num_linhas, int _num_colunas) : Tabuleiro(_num_l
         vetor_barcos.push_back(barcos);
     }
 }
+
+BatalhaNaval::~BatalhaNaval() {}
 
 int BatalhaNaval::inverteJogador() {
     return ((this->jogador == 1) ? 2 : 1);
@@ -231,6 +233,9 @@ void BatalhaNaval::pegaPosicaoBarcos(Barco &barco) {
 
 void BatalhaNaval::pegaJogada() {
 
+    if (fase_jogo == 1) {posicionaBarcos();}
+
+    else {
     int linha, coluna;
     std::string jogada;
 
@@ -260,6 +265,7 @@ void BatalhaNaval::pegaJogada() {
         }
     }
     trocaConteudoCasa(linha, coluna);
+    }
 }
 
 int BatalhaNaval::checaVitoria() {
