@@ -4,7 +4,7 @@
 
 
 /**
- * \brief Tabuleiro do jogo Reversi
+ * \brief \class Reversi
  * 
  * Classe herdeira da classe base Tabuleiro, que possui a função de implementar o jogo Reversi.
  */
