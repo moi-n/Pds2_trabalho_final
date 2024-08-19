@@ -1,6 +1,3 @@
-#ifndef TABULEIRO_DAMAS_H
-#define TABULEIRO_DAMAS_H
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -480,4 +477,3 @@ int TabuleiroDamas::checaVitoria(){
   this->vencedor = jogador;
   return 1;
 }
-#endif
