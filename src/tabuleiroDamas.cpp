@@ -14,8 +14,6 @@ TabuleiroDamas::TabuleiroDamas(int linhas, int colunas) : Tabuleiro(linhas, colu
         if(i < 3){
           matriz_tabuleiro[i][j].setConteudo("x");
           matriz_tabuleiro[i][j].setEstado(1);
-          this->pecas1.push_back(posicao(i, j));
-          m++
         }
         else if(i > 4){
           matriz_tabuleiro[i][j].setConteudo("o");
