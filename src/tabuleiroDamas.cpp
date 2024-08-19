@@ -7,7 +7,7 @@
 
 TabuleiroDamas::TabuleiroDamas() : TabuleiroDamas(0, 0) {}
 
-TabuleiroDamas::TabuleiroDamas(int linhas, int colunas) : tabuleiro(linhas, colunas){
+TabuleiroDamas::TabuleiroDamas(int linhas, int colunas) : Tabuleiro(linhas, colunas){
   for(int i = 0; i < num_linhas; i++){
     for(int j = 0; j < num_colunas; j++){
       if ((i + j)%2 != 0) {
