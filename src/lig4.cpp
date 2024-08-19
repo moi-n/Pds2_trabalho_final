@@ -10,33 +10,6 @@ Lig4::Lig4(int linha_, int coluna_) : TabuleiroFileira(linha_, coluna_) {}
 
 Lig4::~Lig4() {}
 
-
-// ////////////////////////// pegaJogada() //////////////////////////
-//     int linha, coluna ;
-//     std::cout << "Jogador " << jogador << " escolha uma coluna: ";
-//     while(1) {
-//         std::cin >> coluna;
-
-//         ////////////////////////// checa se a coluna esta cheia //////////////////////////
-//         for (int i = num_linhas-1; i >= 0; i--){
-//                 if (matriz_tabuleiro[i][coluna-1].getEstado() == 0){
-//                     linha = i;
-//                     break;
-//                 }
-//                 else linha = -1;
-                
-//             }
-//         ////////////////////////// checa validade da entrada //////////////////////////
-//         if (coluna <= 0 || coluna > num_colunas || linha == -1){
-//             std::cout << "Jogada invalida, digite novamente: ";
-//             continue;
-//         }
-
-//         else {
-//             trocaConteudoCasa(linha+1, coluna);
-//             break;
-//         }
-//     }
 void Lig4::pegaJogada(){
     int linha, coluna;
     std::string jogada;
