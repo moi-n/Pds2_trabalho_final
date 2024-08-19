@@ -38,7 +38,7 @@ class BatalhaNaval : public Tabuleiro {
         /*!
         * \brief Destrutor da classe Batalha Naval.
         */
-        virtual ~BatalhaNaval() {}
+        virtual ~BatalhaNaval();
         /*!
         * \brief Método responsável por imprimir o tabuleiro dos dois jogadores.
         */
