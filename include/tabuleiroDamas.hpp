@@ -25,6 +25,6 @@ class TabuleiroDamas : public Tabuleiro {
     void limpaConteudoCasa(int linha, int coluna);
     int checaVitoria() override;
   
-}
+};
 
 #endif
