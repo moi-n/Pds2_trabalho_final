@@ -41,21 +41,21 @@ int TabuleiroDamas::verificaCaptura(int linha_peca, int coluna_peca){
           }
         }
         //direção superior direita
-        else if(i > 1 && j < this->num_colunas){
+        if(i > 1 && j < this->num_colunas){
           if(matriz_tabuleiro[i - 1][j + 1].getEstado() == 2 &&
           matriz_tabuleiro[i - 2][j + 2].getEstado() == 0){
             return 1;
           }
         }
         //direção inferior esquerda
-        else if(i < this->num_linhas && j > 1){
+        if(i < this->num_linhas && j > 1){
           if(matriz_tabuleiro[i + 1][j - 1].getEstado() == 2 &&
           matriz_tabuleiro[i + 2][j - 2].getEstado() == 0){
             return 1;
           }
         }
         //direção inferior esquerda
-        else if(i < this->num_linhas && j < this->num_colunas){
+        if(i < this->num_linhas && j < this->num_colunas){
           if(matriz_tabuleiro[i + 1][j + 1].getEstado() == 2 &&
           matriz_tabuleiro[i + 2][j + 2].getEstado() ==0){
             return 1;
@@ -109,21 +109,21 @@ int TabuleiroDamas::verificaCaptura(int linha_peca, int coluna_peca){
             }
           }
         //direção superior direita
-          else if(i > 1 && j < this->num_colunas){
+          if(i > 1 && j < this->num_colunas){
             if(matriz_tabuleiro[i - 1][j + 1].getEstado() == 1 &&
             matriz_tabuleiro[i-2][j+2].getEstado() == 0){
               return 1;
             }
           }
         //direção inferior esquerda
-          else if(i < this->num_linhas && j > 1){
+          if(i < this->num_linhas && j > 1){
             if(matriz_tabuleiro[i+1][j-1].getEstado() == 1 &&
             matriz_tabuleiro[i+2][j+2].getEstado() == 0){
               return 1;
             }
           }
         //direção inferior direita
-          else if(i < this->num_linhas && j < this->num_colunas){
+          if(i < this->num_linhas && j < this->num_colunas){
             if(matriz_tabuleiro[i+1][j+1].getEstado() == 1 &&
             matriz_tabuleiro[i+2][j+2].getEstado() ==0){
               return 1;
