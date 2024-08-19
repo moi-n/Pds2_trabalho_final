@@ -119,7 +119,7 @@ int main() {
 
         catch(Tabuleiro::saidaSistema &e)  {
             delete jogo;
-            std::exit(0);
+            std::exit(1);
         }
 
         if(jogo->checaVitoria())
