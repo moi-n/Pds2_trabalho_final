@@ -26,6 +26,10 @@ BatalhaNaval::BatalhaNaval(int _num_linhas, int _num_colunas) : Tabuleiro(_num_l
 
 BatalhaNaval::~BatalhaNaval() {}
 
+std::vector<std::vector<Casa>>& BatalhaNaval::getTabuleiro2(){
+    return vetor_tabuleiros[1];
+}
+
 int BatalhaNaval::inverteJogador() {
     return ((this->jogador == 1) ? 2 : 1);
 }
@@ -92,6 +96,7 @@ void BatalhaNaval::posicionaBarcos() {
     std::cout << "/////////////////////// FASE 1: POSICIONAMENTO DOS BARCOS ///////////////////////" << std::endl;
 
     int aux = 0;
+    imprimeTabuleiro();
     while(aux < 2) {
 
         std::cout << "//////////////////// POSICIONAMENTO DE BARCOS DO JOGADOR (" << jogador << ") ////////////////////" << std::endl << std::endl;
