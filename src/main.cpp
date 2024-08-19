@@ -3,7 +3,8 @@
 #include "reversi.hpp"
 #include "gomoku.hpp"
 #include "batalhanaval.hpp"
-#include "jogador.hpp" 
+#include "jogador.hpp"
+#include "tabuleiroDamas.hpp"
 #include <fstream>
 
 std::string paraMinusculo(std::string palavra)  {
