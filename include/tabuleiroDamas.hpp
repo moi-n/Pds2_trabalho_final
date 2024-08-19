@@ -21,7 +21,7 @@ class TabuleiroDamas : public Tabuleiro {
     int verificaCaptura(int linha_peca, int coluna_peca);
     void verificaJogada(int linha_peca, int coluna_peca, int linha_destino, int coluna_destino, int capturaObrigatoria);
     void pegaJogada() override;
-    void trocaConteudoCasa(int linha, int coluna, std::string conteudo);
+    void mudaConteudoCasa(int linha, int coluna, std::string conteudo);
     void limpaConteudoCasa(int linha, int coluna);
     int checaVitoria() override;
   
