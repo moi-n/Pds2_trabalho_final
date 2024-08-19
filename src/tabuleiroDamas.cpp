@@ -173,14 +173,28 @@ int TabuleiroDamas::verificaCaptura(int linha_peca, int coluna_peca){
 
 void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca, 
   int linha_destino, int coluna_destino, int capturaObrigatoria){
-  switch(std::stoi(matriz_tabuleiro[linha_peca -1][coluna_peca-1].getConteudo())){
-    case 'x':
+  int conteudo = 0;
+  
+  if(matriz_tabuleiro[linha_peca -1][coluna_peca-1].getConteudo() == "x"){
+    conteudo = 1;
+  }
+  else if (matriz_tabuleiro[linha_peca -1][coluna_peca-1].getConteudo()=="X"){
+    conteudo = 2;
+  }
+  else if(matriz_tabuleiro[linha_peca -1][coluna_peca-1].getConteudo()=="o"){
+    conteudo = 3;
+  }
+  else if(matriz_tabuleiro[linha_peca -1][coluna_peca-1].getConteudo()=="O"){
+    conteudo = 4;
+  }
+  switch(conteudo){
+    case 1:
       // captura
       if (linha_peca == linha_destino -2 || linha_peca == linha_destino +2){
         int linha_meio = (linha_destino + linha_peca)/2;
         int coluna_meio = (coluna_destino + coluna_peca)/2;
 
-        if(matriz_tabuleiro[linha_meio][coluna_meio].getEstado() == 2){
+        if(matriz_tabuleiro[linha_meio-1][coluna_meio-1].getEstado() == 2){
           mudaConteudoCasa(linha_destino, coluna_destino, "x");
           limpaConteudoCasa(linha_peca, coluna_peca);
           limpaConteudoCasa(linha_meio, coluna_meio);
@@ -202,7 +216,7 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
         return;
       }
       break;
-    case 'X':
+    case 2:
       //verificar a direção da jogada:
       //se é subindo para a esquerda
       if(linha_peca > linha_destino && coluna_peca > coluna_destino){
@@ -215,6 +229,12 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
               throw std::invalid_argument("ERRO: jogada invalida");
             }
           }
+        }
+        mudaConteudoCasa(linha_destino, coluna_destino, "X");
+        limpaConteudoCasa(linha_peca, coluna_peca);
+        limpaConteudoCasa(linha_destino+1, coluna_destino+1);
+        if(!capturaObrigatoria){
+          this->jogador = (this->jogador == 1) ? 2 : 1;
         }
       }
       //se é subindo para a direita
@@ -229,6 +249,12 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
             }
           }
         }
+        mudaConteudoCasa(linha_destino, coluna_destino, "X");
+        limpaConteudoCasa(linha_peca, coluna_peca);
+        limpaConteudoCasa(linha_destino+1, coluna_destino-1);
+        if(!capturaObrigatoria){
+          this->jogador = (this->jogador == 1) ? 2 : 1;
+        }
       }
       //se é descendo para a esquerda
       else if(linha_peca < linha_destino && coluna_peca > coluna_destino){
@@ -241,6 +267,12 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
               throw std::invalid_argument("ERRO: jogada invalida");
             }
           }
+        }
+        mudaConteudoCasa(linha_destino, coluna_destino, "X");
+        limpaConteudoCasa(linha_peca, coluna_peca);
+        limpaConteudoCasa(linha_destino-1, coluna_destino+1);
+        if(!capturaObrigatoria){
+          this->jogador = (this->jogador == 1) ? 2 : 1;
         }
       }
       //se é descendo para a direita
@@ -255,20 +287,20 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
             }
           }
         }
-      }
-      mudaConteudoCasa(linha_destino, coluna_destino, "X");
-      limpaConteudoCasa(linha_peca, coluna_peca);
-      limpaConteudoCasa(linha_destino-1, coluna_destino-1);
-      if(!capturaObrigatoria){
-        this->jogador = (this->jogador == 1) ? 2 : 1;
+        mudaConteudoCasa(linha_destino, coluna_destino, "X");
+        limpaConteudoCasa(linha_peca, coluna_peca);
+        limpaConteudoCasa(linha_destino-1, coluna_destino-1);
+        if(!capturaObrigatoria){
+          this->jogador = (this->jogador == 1) ? 2 : 1;
+        }
       }
       break;
-    case 'o':
+    case 3:
       //capturar
       if (linha_peca == linha_destino -2 || linha_peca == linha_destino +2){
         int linha_meio = (linha_destino + linha_peca)/2;
         int coluna_meio = (coluna_destino + coluna_peca)/2;
-        if(matriz_tabuleiro[linha_meio][coluna_meio].getEstado() == 2){
+        if(matriz_tabuleiro[linha_meio-1][coluna_meio-1].getEstado() == 1){
           mudaConteudoCasa(linha_destino, coluna_destino, "o");
           limpaConteudoCasa(linha_peca, coluna_peca);
           limpaConteudoCasa(linha_meio, coluna_meio);
@@ -290,7 +322,7 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
         return;
       }
       break;
-    case 'O':
+    case 4:
       //verificar a direção da jogada:
       //se é subindo para a esquerda
       if(linha_peca > linha_destino && coluna_peca > coluna_destino){
@@ -303,6 +335,12 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
               throw std::invalid_argument("ERRO: jogada invalida");
             }
           }
+        }
+        mudaConteudoCasa(linha_destino, coluna_destino, "O");
+        limpaConteudoCasa(linha_peca, coluna_peca);
+        limpaConteudoCasa(linha_destino+1, coluna_destino+1);
+        if(!capturaObrigatoria){
+          this->jogador = (this->jogador == 1) ? 2 : 1;
         }
       }
       //se é subindo para a direita
@@ -317,6 +355,12 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
             }
           }
         }
+        mudaConteudoCasa(linha_destino, coluna_destino, "O");
+        limpaConteudoCasa(linha_peca, coluna_peca);
+        limpaConteudoCasa(linha_destino+1, coluna_destino-1);
+        if(!capturaObrigatoria){
+          this->jogador = (this->jogador == 1) ? 2 : 1;
+        }
       }
       //se é descendo para a esquerda
       else if(linha_peca < linha_destino && coluna_peca > coluna_destino){
@@ -329,6 +373,12 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
               throw std::invalid_argument("ERRO: jogada invalida");
             }
           }
+        }
+        mudaConteudoCasa(linha_destino, coluna_destino, "O");
+        limpaConteudoCasa(linha_peca, coluna_peca);
+        limpaConteudoCasa(linha_destino-1, coluna_destino+1);
+        if(!capturaObrigatoria){
+          this->jogador = (this->jogador == 1) ? 2 : 1;
         }
       }
       //se é descendo para a direita
@@ -343,14 +393,13 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
             }
           }
         }
+        mudaConteudoCasa(linha_destino, coluna_destino, "O");
+        limpaConteudoCasa(linha_peca, coluna_peca);
+        limpaConteudoCasa(linha_destino-1, coluna_destino-1);
+        if(!capturaObrigatoria){
+          this->jogador = (this->jogador == 1) ? 2 : 1;
+        }
       }
-      mudaConteudoCasa(linha_destino, coluna_destino, "O");
-      limpaConteudoCasa(linha_peca, coluna_peca);
-      limpaConteudoCasa(linha_destino-1, coluna_destino-1);
-      if(!capturaObrigatoria){
-        this->jogador = (this->jogador == 1) ? 2 : 1;
-      }
-      return;
       break;
   }
 }
