@@ -409,7 +409,7 @@ void TabuleiroDamas::pegaJogada(){
       if(!std::cin){
         throw std::invalid_argument("Erro: formato incorreto");
       }
-      else if (linha_destino > num_linhas || coluna_destino > num_colunas || linha_destino < 1 ||             coluna_destino < 1) {
+      else if (linha_destino > num_linhas || coluna_destino > num_colunas || linha_destino < 1 || coluna_destino < 1) {
         throw std::out_of_range("ERRO: jogada invalida");
       }
       else if(matriz_tabuleiro[linha_destino -1][coluna_destino -1].getEstado() != 0){
