@@ -132,6 +132,10 @@ class BatalhaNaval : public Tabuleiro {
         * \brief Método que retorna o atributo fase_jogo
         */
         int getFaseJogo();
+        /*!
+        * \brief Método que retorna uma referência para o atributo matriz_tabuleiro_2.
+        */
+        std::vector<std::vector<Casa>>& getTabuleiro2();
 };
 
 #endif
