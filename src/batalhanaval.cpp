@@ -195,10 +195,9 @@ void BatalhaNaval::pegaPosicaoBarcos(Barco &barco) {
                 if(barco.checaEspacoBarco(linha - 1, coluna - 1)) {
                     throw std::invalid_argument("ERRO: a extremidade deve seguir o tamanho do barco!");
                 }
-            }
-            else if (checaVizinhaca(linha, coluna, barco.getId())) {
-                    throw std::invalid_argument("ERRO: barcos nao podem se encostar!");
-            }
+            } 
+            checaVizinhaca(linha, coluna, barco.getId());
+            
             if (aux > 0) {
                 if (barco.getExtremidade(0).getY() == linha - 1 && barco.getExtremidade(0).getX() == coluna - 1) {
                     throw std::invalid_argument("ERRO: nao e possivel colocar duas extremidades no mesmo lugar!");
@@ -211,7 +210,9 @@ void BatalhaNaval::pegaPosicaoBarcos(Barco &barco) {
             barco.adicionaExtremidade(linha - 1, coluna - 1);
             if (barco.getTamanho() == 1) break;
             aux++;
-
+        }catch(Tabuleiro::saidaSistema &e)   {
+            std::cout << e.what() << std::endl;
+            throw;    
         } catch(std::exception &e) {
             getline(std::cin, jogada);
             std::cout << e.what() << std::endl << std::endl;
@@ -500,7 +501,7 @@ void BatalhaNaval::trocaConteudoVizinhaca(Barco &barco) {
 }
 
 int BatalhaNaval::checaVizinhaca(int linha, int coluna, int id) {
-
+    
     if (linha - 1 == 0) {
         //checa borda 00
         if (coluna - 1 == 0) {
@@ -511,7 +512,7 @@ int BatalhaNaval::checaVizinhaca(int linha, int coluna, int id) {
                     }
                     else if (vetor_tabuleiros[jogador - 1][i][j].getEstado() == 2) {
                         if(encontraBarco(i, j, jogador).getId() != id) {
-                            return 1;
+                            throw std::invalid_argument("ERRO: barcos nao podem se encostar!");
                         }
                     }
                 }
@@ -526,7 +527,7 @@ int BatalhaNaval::checaVizinhaca(int linha, int coluna, int id) {
                     }
                     else if (vetor_tabuleiros[jogador - 1][i][j].getEstado() == 2) {
                         if(encontraBarco(i, j, jogador).getId() != id) {
-                            return 1;
+                            throw std::invalid_argument("ERRO: barcos nao podem se encostar!");
                         }
                     }
                 }
@@ -541,7 +542,7 @@ int BatalhaNaval::checaVizinhaca(int linha, int coluna, int id) {
                     }
                     else if (vetor_tabuleiros[jogador - 1][i][j].getEstado() == 2) {
                         if(encontraBarco(i, j, jogador).getId() != id) {
-                            return 1;
+                            throw std::invalid_argument("ERRO: barcos nao podem se encostar!");
                         }
                     }
                 }
@@ -557,7 +558,7 @@ int BatalhaNaval::checaVizinhaca(int linha, int coluna, int id) {
                     }
                     else if (vetor_tabuleiros[jogador - 1][i][j].getEstado() == 2) {
                         if(encontraBarco(i, j, jogador).getId() != id) {
-                            return 1;
+                            throw std::invalid_argument("ERRO: barcos nao podem se encostar!");
                         }
                     }
                 }
@@ -571,7 +572,7 @@ int BatalhaNaval::checaVizinhaca(int linha, int coluna, int id) {
                     }
                     else if (vetor_tabuleiros[jogador - 1][i][j].getEstado() == 2) {
                         if(encontraBarco(i, j, jogador).getId() != id) {
-                            return 1;
+                            throw std::invalid_argument("ERRO: barcos nao podem se encostar!");
                         }
                     }
                 }
@@ -585,7 +586,7 @@ int BatalhaNaval::checaVizinhaca(int linha, int coluna, int id) {
                     }
                     else if (vetor_tabuleiros[jogador - 1][i][j].getEstado() == 2) {
                         if(encontraBarco(i, j, jogador).getId() != id) {
-                            return 1;
+                            throw std::invalid_argument("ERRO: barcos nao podem se encostar!");
                         }
                     }
                 }
@@ -600,7 +601,7 @@ int BatalhaNaval::checaVizinhaca(int linha, int coluna, int id) {
                 }
                 else if (vetor_tabuleiros[jogador - 1][j][i].getEstado() == 2) {
                     if(encontraBarco(j, i, jogador).getId() != id) {
-                        return 1;
+                        throw std::invalid_argument("ERRO: barcos nao podem se encostar!");
                     }
                 }
             }
@@ -614,7 +615,7 @@ int BatalhaNaval::checaVizinhaca(int linha, int coluna, int id) {
                 }
                 else if (vetor_tabuleiros[jogador - 1][j][i].getEstado() == 2) {
                     if(encontraBarco(j, i, jogador).getId() != id) {
-                        return 1;
+                        throw std::invalid_argument("ERRO: barcos nao podem se encostar!");
                     }
                 }
             }
@@ -628,7 +629,7 @@ int BatalhaNaval::checaVizinhaca(int linha, int coluna, int id) {
                 }
                 else if (vetor_tabuleiros[jogador - 1][i][j].getEstado() == 2) {
                     if(encontraBarco(i, j, jogador).getId() != id) {
-                        return 1;
+                        throw std::invalid_argument("ERRO: barcos nao podem se encostar!");
                     }
                 }
             }

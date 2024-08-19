@@ -235,7 +235,9 @@ void Reversi::pegaJogada()   {
                 throw std::invalid_argument("Erro: jogada invalida");
             
             break;
-
+        } catch(Tabuleiro::saidaSistema &e)   {
+            std::cout << e.what() << std::endl;
+            throw;
         } catch(std::exception &e) {
             getline(std::cin, jogada);
             std::cout << e.what() << std::endl;

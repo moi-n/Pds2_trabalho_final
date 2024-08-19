@@ -60,6 +60,10 @@ class Tabuleiro {
          */
         Tabuleiro(int _num_linhas, int _num_colunas);
         
+        class saidaSistema : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
         
         /**
          * \brief Destrutor do tabuleiro.

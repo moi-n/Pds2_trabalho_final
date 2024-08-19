@@ -17,6 +17,10 @@ Tabuleiro::Tabuleiro(int _num_linhas, int _num_colunas) : num_linhas(_num_linhas
 
 Tabuleiro::~Tabuleiro(){}
 
+const char* Tabuleiro::saidaSistema::what() const throw() {
+    return "Saida do sistema";
+}
+
 std::vector<std::vector<Casa>>& Tabuleiro::getTabuleiro(){
     return matriz_tabuleiro;
 }
@@ -79,6 +83,9 @@ void Tabuleiro::trocaConteudoCasa(int linha, int coluna) {
 }
 
 int Tabuleiro::trataJogada(std::string jogada)    {
+    if(jogada=="FS"||jogada=="fs")
+        throw Tabuleiro::saidaSistema();
+
     for(auto i : jogada)    
         if(i-'0'<0 || i-'0'>9)
             throw std::invalid_argument("Erro: jogada invalida");
@@ -107,7 +114,9 @@ void Tabuleiro::pegaJogada() {
                 throw std::invalid_argument("ERRO: jogada invalida");
             }
             break;
-            
+        } catch(Tabuleiro::saidaSistema &e)   {
+            std::cout << e.what() << std::endl;
+            throw;    
         } catch(std::exception &e) {
             getline(std::cin, jogada);
             std::cout << e.what() << std::endl;

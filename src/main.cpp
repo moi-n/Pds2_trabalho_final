@@ -4,7 +4,7 @@
 #include "gomoku.hpp"
 #include "batalhanaval.hpp"
 #include "jogador.hpp"
-#include "tabuleiroDamas.hpp"
+// #include "tabuleiroDamas.hpp"
 #include <fstream>
 
 std::string paraMinusculo(std::string palavra)  {
@@ -108,13 +108,19 @@ int main() {
         jogo = new Gomoku(15,15);
     } else if(num_jogo==5)  {
         jogo = new BatalhaNaval(10,10);
-    } else if(num_jogo==6)  {
-        jogo = new TabuleiroDamas(8,8);
+    // } else if(num_jogo==6)  {
+    //     jogo = new TabuleiroDamas(8,8);
     }
 
     while(1) {  
         jogo->imprimeTabuleiro();
-        jogo->pegaJogada();
+        try 
+        {jogo->pegaJogada();}
+
+        catch(Tabuleiro::saidaSistema &e)  {
+            delete jogo;
+            std::exit(0);
+        }
 
         if(jogo->checaVitoria())
             break;
