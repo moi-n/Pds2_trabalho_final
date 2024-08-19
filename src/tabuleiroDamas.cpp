@@ -26,11 +26,11 @@ TabuleiroDamas::TabuleiroDamas(int linhas, int colunas) : Tabuleiro(linhas, colu
 
 TabuleiroDamas::~TabuleiroDamas(){}
 
-//checa se a peca escolhida pode comer alguma peça adversaria nas 4 direçoes possiveis
+//checa se a peca escolhida pode comer alguma peca adversaria nas 4 direçoes possiveis
 int TabuleiroDamas::verificaCaptura(int linha_peca, int coluna_peca){
   for(int i = 0; i<this->num_linhas; i++){
     for(int j = 0; j<this->num_colunas; j++){
-      //checa se é uma peça normal do jogador 1
+      //checa se é uma peca normal do jogador 1
       if(matriz_tabuleiro[linha_peca -1][coluna_peca-1].getEstado() == 1 && 
       matriz_tabuleiro[i][j].getConteudo() == "x"){
         //direçãosuperior esquerda
@@ -98,7 +98,7 @@ int TabuleiroDamas::verificaCaptura(int linha_peca, int coluna_peca){
           }
         }
       }
-      //checa se é uma peça normal do jogador 2
+      //checa se é uma peca normal do jogador 2
       else if(matriz_tabuleiro[linha_peca -1][coluna_peca-1].getEstado() == 2 &&
       matriz_tabuleiro[i][j].getConteudo() == "o"){
         //direção superior esquerda
@@ -174,7 +174,7 @@ int TabuleiroDamas::verificaCaptura(int linha_peca, int coluna_peca){
 void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca, 
   int linha_destino, int coluna_destino, int capturaObrigatoria){
   switch(std::stoi(matriz_tabuleiro[linha_peca -1][coluna_peca-1].getConteudo())){
-    case 'x:
+    case 'x':
       // captura
       if (linha_peca == linha_destino -2 || linha_peca == linha_destino +2){
         int linha_meio = (linha_destino + linha_peca)/2;
@@ -361,7 +361,7 @@ void TabuleiroDamas::pegaJogada(){
 
   //pega a peca que vai mexer
   while(true) {
-    std::cout << "Jogador " << jogador << ",  escolha uma peça para mover, linha [SPACE] coluna: "; 
+    std::cout << "Jogador " << jogador << ",  escolha uma peca para mover, linha [SPACE] coluna: "; 
 
     try {
       std::cin >> jogada;
@@ -377,9 +377,13 @@ void TabuleiroDamas::pegaJogada(){
         throw std::out_of_range("ERRO: jogada invalida");
       } 
       else if (matriz_tabuleiro[linha_peca - 1][coluna_peca - 1].getEstado() != jogador) {
-        throw std::invalid_argument("ERRO: não é sua peça");
+        throw std::invalid_argument("ERRO: não é sua peca");
       }
       break;
+    }
+    catch(Tabuleiro::saidaSistema &e) {
+      std::cout << e.what() << std::endl;
+      throw;
     }
     catch(std::exception &e) {
       getline(std::cin, jogada);
@@ -392,7 +396,7 @@ void TabuleiroDamas::pegaJogada(){
 
   //pega a posicao do destino da peca
   while(true) {
-    std::cout << "Jogador " << jogador << ", digite onde mover a peça, linha [SPACE] coluna: "; 
+    std::cout << "Jogador " << jogador << ", digite onde mover a peca, linha [SPACE] coluna: "; 
 
     try {
       std::cin >> jogada;
