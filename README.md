@@ -8,7 +8,7 @@ possível registrar e listar os jogadores ordenados pelo seus nomes ou apelidos,
 Nossa solução segue a estrutura pedida no problema. Iniciando o programa, é apresentado um "lobby" contendo todos os jogos que foram implementados numerados, seguido de todos os comandos para: cadastrar um jogador, remover 
 um jogador, listar os jogadores com seus históricos de partidas (dando ao usuário a opção de ordenar pelo nome ou pelo apelido do jogador), e por fim os comandos de iniciar partida e de finalizar o programa. 
 
-No enunciado do problema foi exemplificado para escolher o jogo a partir do seu nome, nosso programa a escolha do jogo é feita a partir do número. Para iniciar o jogo, implementamos da estrutura de comando: 
+No enunciado do problema foi exemplificado para escolher o jogo a partir do seu nome, no nosso programa a escolha do jogo é feita a partir do número. Para iniciar o jogo, implementamos a estrutura de comando: 
 '<Numero do Jogo> <Apelido jogador 1> <Apelido jogador 2>' 
 Requisitando ao usuário o número do jogo que deseja jogar, e o apelido dos dois jogadores já cadastrados que irão se enfrentar no jogo escolhido. Durante o jogo, a cada turno diferente o programa solicita uma jogada ao 
 usuário, e atualiza o tabuleiro de acordo com a jogada escolhida.
