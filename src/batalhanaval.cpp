@@ -96,7 +96,6 @@ void BatalhaNaval::posicionaBarcos() {
     std::cout << "/////////////////////// FASE 1: POSICIONAMENTO DOS BARCOS ///////////////////////" << std::endl;
 
     int aux = 0;
-    imprimeTabuleiro();
     while(aux < 2) {
 
         std::cout << "//////////////////// POSICIONAMENTO DE BARCOS DO JOGADOR (" << jogador << ") ////////////////////" << std::endl << std::endl;
