@@ -34,7 +34,7 @@ int TabuleiroDamas::verificaCaptura(int linha_peca, int coluna_peca){
     for(int j = 0; j<this->num_colunas; j++){
       //checa se é uma peça normal do jogador 1
       if(matriz_tabuleiro[linha_peca -1][coluna_peca-1].getEstado() == 1 && 
-      matriz_tabuleiro[i][j] == "x"){
+      matriz_tabuleiro[i][j].getConteudo() == "x"){
         //direçãosuperior esquerda
         if(i > 1 && j > 1){
           if(matriz_tabuleiro[i - 1][j - 1].getEstado() == 2 &&
@@ -66,7 +66,7 @@ int TabuleiroDamas::verificaCaptura(int linha_peca, int coluna_peca){
       }
       //checa se é um dama do jogador 1
       else if(matriz_tabuleiro[linha_peca -1][coluna_peca-1].getEstado()==1 &&
-        matriz[i][j]== "X"){
+        matriz_tabuleiro[i][j].getConteudo()== "X"){
         //direção superior esquerda
         for(int m = 1; i-m>0 && j-m>0; m++){
           if(matriz_tabuleiro[i-m][j-m].getEstado()){
@@ -77,7 +77,7 @@ int TabuleiroDamas::verificaCaptura(int linha_peca, int coluna_peca){
         }
         //direção superior direita
         for(int m = 1; i-m>0 && j+m<this->num_colunas-1; m++){
-          if(matriz_tabuleiro[i-m][j+m].getEstado())){
+          if(matriz_tabuleiro[i-m][j+m].getEstado()){
             if(matriz_tabuleiro[i - m][j + m].getEstado() == 2 && matriz_tabuleiro[i-m-1][j+m+1].getEstado()==0){
               return 1;
             }
@@ -102,10 +102,10 @@ int TabuleiroDamas::verificaCaptura(int linha_peca, int coluna_peca){
       }
       //checa se é uma peça normal do jogador 2
       else if(matriz_tabuleiro[linha_peca -1][coluna_peca-1].getEstado() == 2 &&
-      matriz_tabuleiro[i][j] == "o"){
+      matriz_tabuleiro[i][j].getConteudo() == "o"){
         //direção superior esquerda
           if(i > 1 && j > 1){ 
-            if(matriz_tabuleiro[i - 1]j - 1].getEstado() == 1 &&
+            if(matriz_tabuleiro[i - 1][j - 1].getEstado() == 1 &&
               matriz_tabuleiro[i - 2][j - 2].getEstado() == 0){
               return 1;
             }
@@ -134,7 +134,7 @@ int TabuleiroDamas::verificaCaptura(int linha_peca, int coluna_peca){
       }
       //checa se é um dama do jogador 2
       else if(matriz_tabuleiro[linha_peca -1][coluna_peca-1].getEstado()==2 &&
-        matriz[i][j]== "O"){
+        matriz_tabuleiro[i][j].getConteudo()=="O"){
         //direção superior esquerda
         for(int m = 1; i-m>0 && j-m>0; m++){
           if(matriz_tabuleiro[i-m][j-m].getEstado()){
