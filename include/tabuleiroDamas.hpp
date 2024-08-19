@@ -50,9 +50,9 @@ class TabuleiroDamas : public Tabuleiro {
      * \brief Verifica a jogada escolhida pelo jogador
      *
      * Recebe os endereçoes da peça escolhida para mover, assim como seu destino e se há a existência de uma jogada de 
-     * captura disponível. Após isso verifica a validade da jogada para caso ela seja um jogada de captura, 
-     * ou caso não seja uma jogada de captura e não tenha uma jogada de captura disponível, realiza a jogada. Do contrário,
-     * realiza um "throw" com o erro específico.
+     * captura disponível. Após isso verifica a validade da jogada e, caso ela seja um jogada de captura 
+     * ou caso não seja uma jogada de captura e não tenha uma jogada de captura disponível, realiza a jogada, mudando 
+     * o jogador da vez caso nescessário. Do contrário, realiza um "throw" com o erro específico.
      * \param linha_peca Linha da peça escolhida para mover.
      * \param coluna_peca Coluna da peça escolhida para mover.
      * \param linha_destino Linha da posição escolhida para mover a peça.
@@ -60,9 +60,40 @@ class TabuleiroDamas : public Tabuleiro {
      * \param capturaObrigatoria Valor que define a existência de um jogada de captura disponível.
      */
     void verificaJogada(int linha_peca, int coluna_peca, int linha_destino, int coluna_destino, int capturaObrigatoria);
+
+     /**
+     * \brief Função que recebe a jogada do jogador.
+     *
+     * Lê as entradas do jogador no terminal e, após verificar brevemente a validade dela, manda os valores para a função
+     * "verificaJogada".
+     */
     void pegaJogada() override;
+
+     /**
+     *\brief Muda o valor da casa.
+     *
+     * Recebe um endereço do tabuleiro e muda seu conteúdo e estado de acordo com o conteúdo passado.
+     * \param linha Linha da casa para mudar o conteúdo.
+     * \param coluna Colunda da casa para mudar o conteúdo.
+     * \param conteudo Conteúdo escolhido para colocar na casa.
+     */
     void mudaConteudoCasa(int linha, int coluna, std::string conteudo);
+
+     /**
+     * \brief Limpa o conteúdo de uma casa
+     *
+     * Recebe a linha e a coluna de uma casa e redefine deu conteúdo para um espaço vazio e seu estado para 0.
+     * \param linha Linha da casa escolhida.
+     * \param coluna Coluna da casa escolhida.
+     */
     void limpaConteudoCasa(int linha, int coluna);
+
+     /**
+     * \brief Verifica se houve um ganhador na partida
+     *
+     * A função percorre o tabuleiro procurando alguma peça que não pertença ao jogador da vez e, caso não ache uma,
+     * define o jogador como o vencedor.
+     */
     int checaVitoria() override;
   
 };
