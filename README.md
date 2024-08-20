@@ -31,4 +31,4 @@ mais simples do jogo.
 
 3- *Batalha Naval*
 
-4- *Damas*
+4- *Damas* O clássio jogo de Damas que todos estão acostumados a jogar no tabuleiro 8x8. Aqui podemos mexer nossas peças de forma diagonal escolhendo, primeiro, a peça que desejamos mexer e, em seguida, a casa para onde queremos move-la. Lembrando que, caso haja a possibilidade de capturar uma peça adversária, capturar é obrigatório. Seguindo todas as regras padrões do jogo, o objetivo é capturar todas as peças adversárias para ganhar.
