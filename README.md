@@ -2,6 +2,7 @@
 Repositório responsável para a produção do trabalho final da disciplina de Programação e Desenvolvimento de Software 2.
 
 ### <ins>AVISOS</ins>
+<p align="justify"> 
 Se ocorrer algum problema na execução do Makefile, é recomendado dar o comando **make clean** para apagar os arquivos objeto e executáveis. Para acessar a documentação detalhada, é necessário baixar, descompactar e acessar a pasta *html*
 e, assim, abrir o arquivo de nome *index.html*. Houve problemas com a compilação dos arquivos teste em terminais convencionais, como Command Prompt e Powershell. Dessa forma, é recomendada a utilização do terminal MSYS2 com a versão mais
 atualizada do MinGW.
@@ -36,4 +37,4 @@ mais simples do jogo.
 
 3- *Batalha Naval* O jogo Batalha Naval possui um tabuleiro 10x10 e introduz ao jogador a possibilidade de posicionar 9 barcos de tamanhos pré-definidos pelo tabuleiro. O jogo possui duas fases: fase 1, que é referente ao posicionamento dos barcos no tabuleiro; fase 2, onde cada jogador atacará o tabuleiro do seu adversário em turnos. Na fase 1, cada jogador terá a oportunidade de colocar seus barcos em qualquer posição disponível no tabuleiro, porém, há algumas limitações: não é possível encostar barcos diferentes, ou seja, estes devem ficar pelo menos uma casa de distância de barcos já posicionados no tabuleiro; para posicionar um barco, é pedido as coordenadas da sua primeira extremidade e, se for uma jogada válida, também é pedido as coordenadas da segunda extremidade, assim, preste atenção no tamanho do barco que é informado no início de cada turno. Na fase 2, cada jogador terá, inicialmente, a oportunidade de atacar uma única casa por turno, porém, se algum barco inimigo for atingido, o jogador poderá realizar outra jogada e continuará até que erre. O jogo é finalizado quando um dos jogadores tiver todos os seus barcos destruídos.
 
-4- *Damas* O clássio jogo de Damas que todos estão acostumados a jogar no tabuleiro 8x8. Aqui podemos mexer nossas peças de forma diagonal escolhendo, primeiro, a peça que desejamos mexer e, em seguida, a casa para onde queremos move-la. Lembrando que, caso haja a possibilidade de capturar uma peça adversária, capturar é obrigatório. Seguindo todas as regras padrões do jogo, o objetivo é capturar todas as peças adversárias para ganhar.
+4- *Damas* O clássio jogo de Damas que todos estão acostumados a jogar no tabuleiro 8x8. Aqui podemos mexer nossas peças de forma diagonal escolhendo, primeiro, a peça que desejamos mexer e, em seguida, a casa para onde queremos move-la. Lembrando que, caso haja a possibilidade de capturar uma peça adversária, capturar é obrigatório. Seguindo todas as regras padrões do jogo, o objetivo é capturar todas as peças adversárias para ganhar.</p>
