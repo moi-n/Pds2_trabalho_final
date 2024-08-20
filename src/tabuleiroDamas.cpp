@@ -198,6 +198,9 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
           mudaConteudoCasa(linha_destino, coluna_destino, "x");
           limpaConteudoCasa(linha_peca, coluna_peca);
           limpaConteudoCasa(linha_meio, coluna_meio);
+          if(!verificaCaptura(linha_peca, coluna_peca)){
+            this->jogador = (this->jogador == 1) ? 2 : 1;
+          }
           break;
         }
       }
@@ -237,6 +240,7 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
         mudaConteudoCasa(linha_destino, coluna_destino, "X");
         limpaConteudoCasa(linha_peca, coluna_peca);
         limpaConteudoCasa(linha_destino+1, coluna_destino+1);
+        
         if(!capturaObrigatoria){
           this->jogador = (this->jogador == 1) ? 2 : 1;
         }
@@ -316,6 +320,9 @@ void TabuleiroDamas::verificaJogada(int linha_peca, int coluna_peca,
           mudaConteudoCasa(linha_destino, coluna_destino, "o");
           limpaConteudoCasa(linha_peca, coluna_peca);
           limpaConteudoCasa(linha_meio, coluna_meio);
+          if(!verificaCaptura(linha_peca, coluna_peca)){
+            this->jogador = (this->jogador == 1) ? 2 : 1;
+          }
           break;
         }
       }
