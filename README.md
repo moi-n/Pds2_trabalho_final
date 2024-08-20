@@ -3,7 +3,8 @@ Repositório responsável para a produção do trabalho final da disciplina de P
 
 ### <ins>AVISOS</ins>
 Se ocorrer algum problema na execução do Makefile, é recomendado dar o comando **make clean** para apagar os arquivos objeto e executáveis. Para acessar a documentação detalhada, é necessário baixar, descompactar e acessar a pasta *html*
-e, assim, abrir o arquivo de nome *index.html*.
+e, assim, abrir o arquivo de nome *index.html*. Houve problemas com a compilação dos arquivos teste em terminais convencionais, como Command Prompt e Powershell. Dessa forma, é recomendada a utilização do terminal MSYS2 com a versão mais
+atualizada do MinGW.
 
 O problema proposto ao nosso grupo foi o desenvolvimento de dois (2) jogos de tabuleiro, o Lig4 e o Reversi. Além dos jogos propriamente, também foi pedido um sistema para cadastrar e remover jogadores, de forma que também 
 fosse
