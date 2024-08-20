@@ -96,8 +96,7 @@ int main() {
     
     std::cout << "----- Iniciando jogo -----" << std::endl;
     Tabuleiro *jogo;
-    //para os jogos que requerem alguma configuração inicial é possível por uma chamada de função dentro desses if's
-    //antes de alocar a memória do tabuleiro.
+
     if(num_jogo==1)   {
         jogo = new Reversi();
     } else if(num_jogo==2)   {
