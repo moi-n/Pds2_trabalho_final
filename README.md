@@ -1,8 +1,9 @@
 # Pds2_trabalho_final
 Repositório responsável para a produção do trabalho final da disciplina de Programação e Desenvolvimento de Software 2.
 
-### <ins>AVISO</ins>
-Se ocorrer algum problema na execução do Makefile, é recomendado dar o comando **make clean** para apagar os arquivos objeto e executáveis.
+### <ins>AVISOS</ins>
+Se ocorrer algum problema na execução do Makefile, é recomendado dar o comando **make clean** para apagar os arquivos objeto e executáveis. Para acessar a documentação detalhada, é necessário baixar e acessar a pasta *html*
+e abrir o arquivo de nome *index.html*.
 
 O problema proposto ao nosso grupo foi o desenvolvimento de dois (2) jogos de tabuleiro, o Lig4 e o Reversi. Além dos jogos propriamente, também foi pedido um sistema para cadastrar e remover jogadores, de forma que também 
 fosse
